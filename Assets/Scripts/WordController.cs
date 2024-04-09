@@ -20,10 +20,18 @@ public class WordController : MonoBehaviour {
     private string styleClose = "</style>";
 
 
-    private int index; // Number of letters already typed in this word
+    private int index = 0; // Number of letters already typed in this word
     private Word word = Word.defaultWord;
     private TMP_Text displayText;
     public float fallSpeed { get; set; } = 1f; // to be set by GameManager / ProgressManager...
+
+    private void Awake() {
+        displayText = GetComponent<TMP_Text>();
+    }
+
+    private void Update() {
+        transform.Translate(0f, -fallSpeed * Time.deltaTime, 0);
+    }
 
     public void SetWord(Word word) {
         this.word = word;
@@ -31,6 +39,7 @@ public class WordController : MonoBehaviour {
     }
 
     public bool IsNextLetter(char letter) {
+        Debug.Log(index);
         return letter == word.text[index];
     }
 
@@ -50,12 +59,5 @@ public class WordController : MonoBehaviour {
         return word.text.Length == index;
     }
 
-    private void Awake() {
-        displayText = GetComponent<TMP_Text>();
-    }
-
-    private void Update() {
-        transform.Translate(0f, -fallSpeed * Time.deltaTime, 0);
-    }
 
 }

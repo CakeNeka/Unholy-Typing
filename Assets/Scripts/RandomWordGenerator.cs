@@ -1,9 +1,18 @@
+using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "WordGenerator", menuName = "TMPWordGenerator", order = 0)]
-public class RandomWordGenerator : ScriptableObject {
+public class RandomWordGenerator : MonoBehaviour {
+    [SerializeField]
+    private static string unholyTextFile = "unholy.txt";
+    private static string[] unholyWords;
+
     public Word generateWord(DifficultyLevel difficulty) {
-        return new Word(difficulty.ToString(), difficulty);
-        // TODO Actually generate a random word given difficulty level
+        // difficulty levels are not yet implemented
+        return new Word(unholyWords[Random.Range(0, unholyWords.Length)], difficulty);
+    }
+
+    private void Start() {
+        unholyWords = File.ReadAllLines(Application.streamingAssetsPath + "/" + unholyTextFile);
     }
 }

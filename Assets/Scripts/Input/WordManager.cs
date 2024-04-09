@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -11,14 +12,22 @@ public class WordManager : MonoBehaviour {
     private List<WordController> wordControllers = new List<WordController>();
     [SerializeField]
     private WordController activeWord = null;
-
-    [SerializeField]
-    RandomWordGenerator wordGenerator;
+    private RandomWordGenerator wordGenerator;
     [SerializeField]
     GameObject wordPrefab;
 
     private void Start() {
-        SpawnWordGameObject(DifficultyLevel.Wimp);
+        wordGenerator = GetComponent<RandomWordGenerator>();
+        StartCoroutine(SpawnRepeating());
+    }
+
+    // TODO move word spawning to another script
+    IEnumerator SpawnRepeating() {
+        int i = 0;
+        while (i++ < 2) {
+            yield return new WaitForSeconds(2f);
+            SpawnWordGameObject(DifficultyLevel.Wimp);
+        }
     }
 
     public void SpawnWordGameObject(DifficultyLevel difficulty) {
@@ -42,8 +51,8 @@ public class WordManager : MonoBehaviour {
             if (activeWord.WordTyped()) {
                 // remove word if already typed
                 activeWord.DestroySelf();
-                activeWord = null;
                 wordControllers.Remove(activeWord);
+                activeWord = null;
             }
         } else {
             // TODO penalize
