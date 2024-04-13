@@ -13,7 +13,7 @@ public class RandomWordGenerator : MonoBehaviour {
     public Word generateWord(DifficultyLevel difficulty) {
         if (difficulty == DifficultyLevel.Wimp)
             return new Word(wimpWords[Random.Range(0, wimpWords.Length)], difficulty);
-        return new Word(wimpWords[Random.Range(0, leetWords.Length)], difficulty);
+        return new Word(leetWords[Random.Range(0, leetWords.Length)], difficulty);
     }
 
     private void Start() {
