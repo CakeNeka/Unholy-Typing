@@ -3,12 +3,13 @@ using System.IO;
 using UnityEngine;
 
 public class RandomWordGenerator : MonoBehaviour {
+    // TODO txt filenames should be managed by GameManager.GameParameters
     [SerializeField]
     private static string wimpWordsFile = "wimp.txt";
     [SerializeField]
     private static string leetWordsFile = "leet.txt";
-    private static string[] wimpWords;
-    private static string[] leetWords;
+    private string[] wimpWords;
+    private string[] leetWords;
 
     public Word generateWord(DifficultyLevel difficulty) {
         if (difficulty == DifficultyLevel.Wimp)

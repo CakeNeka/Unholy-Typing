@@ -35,7 +35,6 @@ public class WordController : MonoBehaviour {
     }
 
     public bool IsNextLetter(char letter) {
-        Debug.Log(index);
         return letter == word.text[index];
     }
 
