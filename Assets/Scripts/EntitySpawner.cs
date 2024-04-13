@@ -57,7 +57,6 @@ public class EntitySpawner : MonoBehaviour {
             Random.Range(topRightCorner.x - offsetX, topLeftCorner.x + offsetX)
             :
             (topLeftCorner.x + topRightCorner.x) / 2;
-        xCoord = topLeftCorner.x + offsetX;
 
         float yCoord = topRightCorner.y + offsetY;
 

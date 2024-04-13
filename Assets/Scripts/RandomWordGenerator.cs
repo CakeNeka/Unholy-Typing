@@ -3,11 +3,6 @@ using System.IO;
 using UnityEngine;
 
 public class RandomWordGenerator : MonoBehaviour {
-    // TODO txt filenames should be managed by GameManager.GameParameters
-    [SerializeField]
-    private static string wimpWordsFile = "wimp.txt";
-    [SerializeField]
-    private static string leetWordsFile = "leet.txt";
     private string[] wimpWords;
     private string[] leetWords;
 
@@ -18,6 +13,8 @@ public class RandomWordGenerator : MonoBehaviour {
     }
 
     private void Start() {
+        string wimpWordsFile = GameManager.Instance.config.wimpWordsFile;
+        string leetWordsFile = GameManager.Instance.config.leetWordsFile;
         wimpWords = File.ReadAllLines(Application.streamingAssetsPath + "/" + wimpWordsFile);
         leetWords = File.ReadAllLines(Application.streamingAssetsPath + "/" + leetWordsFile);
     }

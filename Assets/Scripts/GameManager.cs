@@ -7,9 +7,7 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager Instance { get; private set; }
 
-    // TODO use scriptable object to hold game parameters
-    // TODO hold script references in GameManager
-
+    public GameConfig config;
     public List<WordController> WordControllers { get; private set; } = new List<WordController>();
 
     private void Awake() {
