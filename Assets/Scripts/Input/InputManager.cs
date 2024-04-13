@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour {
 
-    private WordManager wordManager;
+    private TypingManager wordManager;
     private void Start() {
-        wordManager = GetComponent<WordManager>();
+        wordManager = GetComponent<TypingManager>();
     }
     void Update() {
         foreach (char letter in Input.inputString) {

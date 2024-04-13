@@ -8,12 +8,14 @@ using UnityEngine.Assertions;
 /// Translates user input into actions and effects
 /// Only one instance of this script should exist on scene
 /// </summary>
-public class WordManager : MonoBehaviour {
+public class TypingManager : MonoBehaviour {
     private List<WordController> wordControllers;
     private WordController activeWord = null;
+    private ProgressionManager progressionManager;
 
     private void Start() {
         wordControllers = GameManager.Instance.WordControllers;
+        progressionManager = GetComponent<ProgressionManager>();
     }
 
     public void TypeLetter(char letter) {
@@ -29,6 +31,8 @@ public class WordManager : MonoBehaviour {
             // activeWord.Reward();
             if (activeWord.WordTyped()) {
                 // remove word if already typed
+                activeWord.ToggleTimer();
+                progressionManager.addToAverageCPM(activeWord.getCPM());
                 activeWord.DestroySelf();
                 wordControllers.Remove(activeWord);
                 activeWord = null;
@@ -47,6 +51,10 @@ public class WordManager : MonoBehaviour {
                 activeWord = word;
             }
         }
-        return activeWord != null;
+        if (activeWord) {
+            activeWord.ToggleTimer();
+            return true;
+        }
+        return false;
     }
 }

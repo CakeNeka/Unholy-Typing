@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Text;
 using TMPro;
 using UnityEngine;
@@ -12,10 +13,12 @@ using UnityEngine.UI;
 /// </summary>
 public class WordController : MonoBehaviour {
 
+    private float startTime;
+    private float elapsedTime = 0f;
+    private bool timerRunning = false;
+
     private string styleOpen = "<style=\"typed\">";
     private string styleClose = "</style>";
-
-
     private int index = 0; // Number of letters already typed in this word
     private Word word = Word.defaultWord;
     private TMP_Text displayText;
@@ -55,5 +58,17 @@ public class WordController : MonoBehaviour {
         return word.text.Length == index;
     }
 
+    public void ToggleTimer() {
+        if (timerRunning) {
+            elapsedTime += Time.time - startTime;
+        } else {
+            startTime = Time.time;
+        }
+        timerRunning = !timerRunning;
+    }
 
+    public float getCPM() {
+        Assert.IsFalse(timerRunning);
+        return word.text.Length / (elapsedTime / 60f);
+    }
 }

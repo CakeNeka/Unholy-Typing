@@ -2,12 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// 
-/// </summary>
 public class EntitySpawner : MonoBehaviour {
 
-    [SerializeField]
     private GameManager gameManager;
     [SerializeField]
     private GameObject wordPrefab;
