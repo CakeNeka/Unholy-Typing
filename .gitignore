@@ -77,3 +77,6 @@ crashlytics-build.properties
 .vscode/
 .editorconfig 
 .vsconfig
+
+# TextMesh Pro files
+[Aa]ssets/TextMesh*Pro/
