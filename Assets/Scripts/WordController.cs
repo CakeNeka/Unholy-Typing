@@ -6,13 +6,9 @@ using UnityEngine.Assertions;
 using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
-/*
-Responsible for
-- Displaying word
-- Moving word
-*/
 /// <summary>
 /// There is one for every active word
+/// Responsible for displaying and moving a single word
 /// </summary>
 public class WordController : MonoBehaviour {
 
@@ -46,6 +42,7 @@ public class WordController : MonoBehaviour {
     public void TypeLetter() {
         index++;
         Assert.IsFalse(index > word.text.Length);
+
         // add rich text tags
         string newText = styleOpen + word.text.Substring(0, index) + styleClose + word.text.Substring(index);
         displayText.text = newText;

@@ -6,6 +6,7 @@ using UnityEngine.Assertions;
 
 /// <summary>
 /// Translates user input into actions and effects
+/// Only one instance of this script should exist on scene
 /// </summary>
 public class WordManager : MonoBehaviour {
     [SerializeField]
@@ -24,9 +25,12 @@ public class WordManager : MonoBehaviour {
     // TODO move word spawning to another script
     IEnumerator SpawnRepeating() {
         int i = 0;
-        while (i++ < 2) {
+        while (true) {
             yield return new WaitForSeconds(2f);
-            SpawnWordGameObject(DifficultyLevel.Wimp);
+            if (i++ % 2 == 0)
+                SpawnWordGameObject(DifficultyLevel.Wimp);
+            else
+                SpawnWordGameObject(DifficultyLevel.Leet);
         }
     }
 
@@ -40,6 +44,7 @@ public class WordManager : MonoBehaviour {
     }
 
     public void TypeLetter(char letter) {
+        // If there's no active word and no word starts by the typed letter then return. 
         if (!activeWord && !TryFindWord(letter)) {
             return;
         }

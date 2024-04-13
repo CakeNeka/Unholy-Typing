@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 94421942}
   - component: {fileID: 94421941}
   - component: {fileID: 94421943}
+  - component: {fileID: 94421944}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -155,7 +156,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wordControllers: []
   activeWord: {fileID: 0}
-  wordGenerator: {fileID: 11400000, guid: 871e6855a0b395a4c82fbd8b608f45d2, type: 2}
   wordPrefab: {fileID: 5592726464224038169, guid: 107d15b321d0cbe478e2e29b30b34877, type: 3}
 --- !u!4 &94421942
 Transform:
@@ -182,6 +182,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9057f1d85773c054193f99fdc3d44e07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &94421944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94421940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1f6dc6a7d57a9340a61d1f419b8a971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &519420028
