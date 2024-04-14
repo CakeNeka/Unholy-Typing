@@ -13,8 +13,9 @@ _A simple typing game_
 
 <br>
 
-1. [About The Project](Unholy-Typing)
-2. [Technologies Used](-Technologies-used)
+1. [About The Project](-About-The-Project)
+2. [Overview](-Overview)
+3. [Technologies Used](-Technologies-used)
 4. [Git and Github](-Git-and-Github)
 5. [Project Files](-Project-Files)
   
@@ -23,6 +24,8 @@ _A simple typing game_
 ## 📜 About The Project
 
 A typing game.
+
+## 🎨 Overview
 
 ## ⚙️ Technologies used
 
@@ -37,6 +40,11 @@ You can follow the development of this game through the [issues][gh-issues] and 
 I'm using the [Conventional Commits][conventional-commits] standard so the git log is clean and understandable.
 
 ## 💾 Project Files
+
+- [`Assets`](./Assets/). 
+    - [`Scripts`](./Assets/Scripts/). This folder contains all the .cs files
+    - [`Prefabs`](./Assets/Prefabs/). 
+
 
 ---
 
