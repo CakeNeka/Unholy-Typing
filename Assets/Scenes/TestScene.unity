@@ -135,6 +135,9 @@ GameObject:
   - component: {fileID: 94421941}
   - component: {fileID: 94421943}
   - component: {fileID: 94421944}
+  - component: {fileID: 94421945}
+  - component: {fileID: 94421946}
+  - component: {fileID: 94421947}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -154,9 +157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b1f819cce623841a83a47ff887475c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wordControllers: []
-  activeWord: {fileID: 0}
-  wordPrefab: {fileID: 5592726464224038169, guid: 107d15b321d0cbe478e2e29b30b34877, type: 3}
 --- !u!4 &94421942
 Transform:
   m_ObjectHideFlags: 0
@@ -196,6 +196,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1f6dc6a7d57a9340a61d1f419b8a971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &94421945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94421940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b7624db1521efe4aa818ab6095ffeb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wordPrefab: {fileID: 5592726464224038169, guid: 107d15b321d0cbe478e2e29b30b34877, type: 3}
+--- !u!114 &94421946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94421940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f89a01d297955c48832b8ed43c008b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 8f87fa5492a2feb489c71b1597ab2d2a, type: 2}
+--- !u!114 &94421947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94421940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7875548d5ef3944fb739607c6caa128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  averageCPM: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager Instance { get; private set; }
 
     public GameConfig config;
+    public bool IsGameActive { get; private set; } = true;
     public List<WordController> WordControllers { get; private set; } = new List<WordController>();
 
     private void Awake() {

@@ -1,4 +1,4 @@
 public enum DifficultyLevel {
-    Wimp = 1,
-    Leet = 2,
+    Easy = 1,
+    Hard = 2,
 }

@@ -1,5 +1,5 @@
 public class Word {
-    public static readonly Word defaultWord = new Word("default", DifficultyLevel.Wimp);
+    public static readonly Word defaultWord = new Word("default", DifficultyLevel.Easy);
     public string text { get; private set; }
     private DifficultyLevel wordDifficulty;
 

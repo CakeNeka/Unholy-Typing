@@ -22,14 +22,14 @@ public class WordController : MonoBehaviour {
     private int index = 0; // Number of letters already typed in this word
     private Word word = Word.defaultWord;
     private TMP_Text displayText;
-    public float fallSpeed { get; set; } = 1f; // to be set by GameManager / ProgressManager...
+    public float FallSpeed { get; set; } = 1f; // to be set by GameManager / ProgressManager...
 
     private void Awake() {
         displayText = GetComponent<TMP_Text>();
     }
 
     private void Update() {
-        transform.Translate(0f, -fallSpeed * Time.deltaTime, 0);
+        transform.Translate(0f, -FallSpeed * Time.deltaTime, 0);
     }
 
     public void SetWord(Word word) {

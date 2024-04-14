@@ -12,28 +12,21 @@ public class EntitySpawner : MonoBehaviour {
     private void Start() {
         wordGenerator = GetComponent<RandomWordGenerator>();
         gameManager = GameManager.Instance;
-        StartCoroutine(SpawnRepeating());
     }
 
-    // TODO: Progression manager should control when a word is spawned
-    IEnumerator SpawnRepeating() {
-        int i = 0;
-        while (true) {
-            yield return new WaitForSeconds(2f);
-            if (i++ % 2 == 0)
-                SpawnWordGameObject(DifficultyLevel.Wimp);
-            else
-                SpawnWordGameObject(DifficultyLevel.Leet);
-        }
-    }
 
-    public void SpawnWordGameObject(DifficultyLevel difficulty) {
+    public WordController SpawnWordGameObject(DifficultyLevel difficulty) {
         // generate random word
         Word word = wordGenerator.generateWord(difficulty);
         // Instantiate word GO
         WordController controller = Instantiate(wordPrefab, GenerateSpawnPosition(difficulty), Quaternion.identity).GetComponent<WordController>();
         controller.SetWord(word);
         gameManager.AddWordController(controller);
+        return controller;
+    }
+
+    public void SpawnPowerUp() {
+        Debug.LogError("TODO: Implement power ups");
     }
 
     /// <summary>
@@ -49,7 +42,7 @@ public class EntitySpawner : MonoBehaviour {
         Vector3 topLeftCorner = cam.ViewportToWorldPoint(new Vector3(0, 1, cam.nearClipPlane));
         Vector3 topRightCorner = cam.ViewportToWorldPoint(new Vector3(1, 1, cam.nearClipPlane));
 
-        float xCoord = difficulty == DifficultyLevel.Wimp ?
+        float xCoord = difficulty == DifficultyLevel.Easy ?
             Random.Range(topRightCorner.x - offsetX, topLeftCorner.x + offsetX)
             :
             (topLeftCorner.x + topRightCorner.x) / 2;

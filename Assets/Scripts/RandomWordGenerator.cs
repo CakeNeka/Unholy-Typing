@@ -7,7 +7,7 @@ public class RandomWordGenerator : MonoBehaviour {
     private string[] leetWords;
 
     public Word generateWord(DifficultyLevel difficulty) {
-        if (difficulty == DifficultyLevel.Wimp)
+        if (difficulty == DifficultyLevel.Easy)
             return new Word(wimpWords[Random.Range(0, wimpWords.Length)], difficulty);
         return new Word(leetWords[Random.Range(0, leetWords.Length)], difficulty);
     }
