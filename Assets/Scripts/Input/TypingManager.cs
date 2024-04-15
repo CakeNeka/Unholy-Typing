@@ -57,4 +57,9 @@ public class TypingManager : MonoBehaviour {
         }
         return false;
     }
+
+    public void stopFocus() {
+        activeWord.ToggleTimer();
+        activeWord = null;
+    }
 }

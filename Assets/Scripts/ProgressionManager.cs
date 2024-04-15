@@ -38,7 +38,6 @@ public class ProgressionManager : MonoBehaviour {
 
             // decide whether to generate hard or easy word
             wordLevel = GenerateDifficultyLevel();
-            Debug.Log(wordLevel);
             spawnedWord = spawner.SpawnWordGameObject(wordLevel);
 
             // set word fallspeed
@@ -66,7 +65,6 @@ public class ProgressionManager : MonoBehaviour {
 
 
     private DifficultyLevel GenerateDifficultyLevel() {
-        Debug.Log(canSpawnHardWord);
         if (canSpawnHardWord && UnityEngine.Random.Range(0f, 1f) < config.hardWordChance) {
             StartCoroutine(WaitForHardWordCoolDown());
             return DifficultyLevel.Hard;

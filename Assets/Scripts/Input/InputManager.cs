@@ -3,13 +3,17 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour {
 
-    private TypingManager wordManager;
+    private TypingManager typingManager;
     private void Start() {
-        wordManager = GetComponent<TypingManager>();
+        typingManager = GetComponent<TypingManager>();
     }
     void Update() {
+        if (Input.GetKeyDown(KeyCode.Tab)) {
+            typingManager.stopFocus();
+        }
+
         foreach (char letter in Input.inputString) {
-            wordManager.TypeLetter(letter);
+            typingManager.TypeLetter(letter);
         }
     }
 
