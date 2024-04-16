@@ -21,4 +21,26 @@ public class GameManager : MonoBehaviour {
     public void AddWordController(WordController controller) {
         WordControllers.Add(controller);
     }
+
+    // FIXME Duplicated code
+    public float GetCPMFallSpeedMultiplier(float cpm) {
+        foreach (Interval interval in config.CPMIntervals) {
+            if (cpm >= interval.minCPMValue && cpm < interval.maxCPMValue) {
+                return interval.fallSpeedMultiplier;
+            }
+        }
+        Debug.LogError($"Typing power {cpm} is superhuman, please proceed to die");
+        return 100;
+    }
+
+    public float getCPMSpawnDelayMultiplier(float cpm) {
+        foreach (Interval interval in config.CPMIntervals) {
+            if (cpm >= interval.minCPMValue && cpm < interval.maxCPMValue) {
+                return interval.spawnDelayMultiplier;
+            }
+        }
+        Debug.LogError($"Typing power {cpm} is superhuman, please proceed to die");
+        return 100;
+    }
+
 }

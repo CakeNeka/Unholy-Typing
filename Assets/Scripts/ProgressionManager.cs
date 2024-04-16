@@ -8,14 +8,14 @@ public class ProgressionManager : MonoBehaviour {
     private GameManager gameManager;
     private GameConfig config;
 
+    [SerializeField]
     private float averageCPM = 0f;
     private int wordNumber = 0;
     private bool canSpawnHardWord = true;
 
     private Dictionary<DifficultyLevel, float> baseSpeedDictionary;
 
-    private float spawnDelayMultiplier = 1f; // changes based on time
-    private float spawnDelayCPMMultiplier = 1f; // changes based on player's CPM
+    private float spawnDelayTimedMultiplier = 1f; // changes based on time
 
     private void Start() {
         spawner = GetComponent<EntitySpawner>();
@@ -42,14 +42,15 @@ public class ProgressionManager : MonoBehaviour {
 
             // set word fallspeed
             spawnedWord.FallSpeed = GenerateFallSpeed(wordLevel);
-
         }
     }
     private float CalculateSpawnDelay() {
         // the new value should be based on the time elapsed (Time.time) and the player's CPM
-        float spawnDelay = config.initialSpawnDelay * spawnDelayMultiplier * spawnDelayCPMMultiplier;
+        float spawnDelay = config.initialSpawnDelay
+            * spawnDelayTimedMultiplier
+            * gameManager.getCPMSpawnDelayMultiplier(averageCPM);
 
-        spawnDelayMultiplier -= 0.01f;
+        spawnDelayTimedMultiplier -= 0.01f; // more words will spawn over time
 
         // TODO: This should be a formula
 
@@ -73,14 +74,14 @@ public class ProgressionManager : MonoBehaviour {
     }
 
     private float GenerateFallSpeed(DifficultyLevel level) {
-        // TODO:  Multipliers!!!
-        return baseSpeedDictionary[level];
+        return baseSpeedDictionary[level] * gameManager.GetCPMFallSpeedMultiplier(averageCPM);
     }
 
     public void AddToAverageCPM(float cpm) {
         if (wordNumber == 0) {
             averageCPM = cpm;
         } else {
+            // It calculates the new avg based on the previous avg, the new value and the amount of values.
             float newSum = wordNumber * averageCPM + cpm;
             averageCPM = newSum / (wordNumber + 1);
         }
