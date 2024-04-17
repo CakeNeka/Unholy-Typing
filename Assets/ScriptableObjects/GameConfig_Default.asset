@@ -12,23 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f4bf5067b92dd947a15eb8dc970b4c0, type: 3}
   m_Name: GameConfig_Default
   m_EditorClassIdentifier: 
-  wimpWordsFile: hard.txt
-  leetWordsFile: easy.txt
-  initialSpawnDelay: 0
-  easyFallSpeed: 1.3
-  hardFallSpeed: 0.8
-  hardWordChance: 0.9
-  hardWordCoolDown: 0
+  wimpWordsFile: easy.txt
+  leetWordsFile: hard.txt
+  initialSpawnDelay: 1
+  easyFallSpeed: 0.8
+  hardFallSpeed: 0.4
+  hardWordChance: 0.2
+  hardWordCoolDown: 5
   CPMIntervals:
   - minCPMValue: 0
     maxCPMValue: 100
-    multiplierValue: 1
+    fallSpeedMultiplier: 0.5
+    spawnDelayMultiplier: 2
   - minCPMValue: 100
     maxCPMValue: 200
-    multiplierValue: 1
-  - minCPMValue: 100
-    maxCPMValue: 200
-    multiplierValue: 1
-  - minCPMValue: 100
-    maxCPMValue: 200
-    multiplierValue: 1
+    fallSpeedMultiplier: 1.2
+    spawnDelayMultiplier: 1
+  - minCPMValue: 200
+    maxCPMValue: 300
+    fallSpeedMultiplier: 1
+    spawnDelayMultiplier: 1
+  - minCPMValue: 300
+    maxCPMValue: 1000
+    fallSpeedMultiplier: 0
+    spawnDelayMultiplier: 0
