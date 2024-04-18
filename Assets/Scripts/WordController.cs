@@ -15,7 +15,7 @@ public class WordController : MonoBehaviour {
 
     private float startTime;
     private float elapsedTime = 0f;
-    private bool timerRunning = false;
+    public bool TimerRunning { get; private set; } = false;
 
     private string styleOpen = "<style=\"typed\">";
     private string styleClose = "</style>";
@@ -59,16 +59,16 @@ public class WordController : MonoBehaviour {
     }
 
     public void ToggleTimer() {
-        if (timerRunning) {
+        if (TimerRunning) {
             elapsedTime += Time.time - startTime;
         } else {
             startTime = Time.time;
         }
-        timerRunning = !timerRunning;
+        TimerRunning = !TimerRunning;
     }
 
     public float getCPM() {
-        Assert.IsFalse(timerRunning);
+        Assert.IsFalse(TimerRunning);
         return word.text.Length / (elapsedTime / 60f);
     }
 }

@@ -8,10 +8,11 @@ public class ProgressionManager : MonoBehaviour {
     private GameManager gameManager;
     private GameConfig config;
 
-    [SerializeField]
+    [SerializeField] // Just for debugging
     private float averageCPM = 0f;
     private int wordNumber = 0;
     private bool canSpawnHardWord = true;
+    private int currentMisses = 0;
 
     private Dictionary<DifficultyLevel, float> baseSpeedDictionary;
 
@@ -86,5 +87,11 @@ public class ProgressionManager : MonoBehaviour {
             averageCPM = newSum / (wordNumber + 1);
         }
         wordNumber++;
+    }
+
+    public void MissWord() {
+        if (++currentMisses > gameManager.config.missesAllowed) {
+            Debug.LogWarning("TODO: You just lose, this is very very bad...");
+        }
     }
 }

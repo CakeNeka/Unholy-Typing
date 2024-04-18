@@ -31,17 +31,34 @@ public class TypingManager : MonoBehaviour {
             // activeWord.Reward();
             if (activeWord.WordTyped()) {
                 // remove word if already typed
-                activeWord.ToggleTimer();
-                progressionManager.AddToAverageCPM(activeWord.getCPM());
-                activeWord.DestroySelf();
-                wordControllers.Remove(activeWord);
-                activeWord = null;
+                destroyWord(activeWord);
             }
         } else {
             // TODO penalize
             // activeWordWord.Penalize();
         }
     }
+
+    public void destroyWord(WordController word) {
+        if (activeWord == word) {
+            activeWord = null;
+        }
+        if (word.TimerRunning)
+            word.ToggleTimer();
+        progressionManager.AddToAverageCPM(word.getCPM());
+        word.DestroySelf();
+        Debug.Log("Destroying self");
+        wordControllers.Remove(word);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag("Word") && other.TryGetComponent<WordController>(out WordController word)) {
+            Debug.Log(other.tag);
+            destroyWord(word);
+            progressionManager.MissWord();
+        }
+    }
+
 
     private bool TryFindWord(char letter) {
         foreach (var word in wordControllers) {

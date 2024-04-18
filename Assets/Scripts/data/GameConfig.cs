@@ -15,6 +15,7 @@ public class GameConfig : ScriptableObject {
     public float initialSpawnDelay;
     public float easyFallSpeed;
     public float hardFallSpeed;
+    public int missesAllowed;
     [Tooltip("Between 0 and one")]
     [Min(0f)]
     public float hardWordChance;
