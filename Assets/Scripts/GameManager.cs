@@ -29,8 +29,8 @@ public class GameManager : MonoBehaviour {
                 return interval.fallSpeedMultiplier;
             }
         }
-        Debug.LogError($"Typing power {cpm} is superhuman, please proceed to die");
-        return 100;
+        Debug.LogError($"FATAL ERROR: Typing power {cpm} is superhuman, please proceed to die");
+        return 0;
     }
 
     public float getCPMSpawnDelayMultiplier(float cpm) {
@@ -39,8 +39,8 @@ public class GameManager : MonoBehaviour {
                 return interval.spawnDelayMultiplier;
             }
         }
-        Debug.LogError($"Typing power {cpm} is superhuman, please proceed to die");
-        return 100;
+        Debug.LogError($"FATAL ERROR: Typing power {cpm} is superhuman");
+        return 0;
     }
 
 }

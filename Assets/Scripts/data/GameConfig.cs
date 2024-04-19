@@ -15,7 +15,12 @@ public class GameConfig : ScriptableObject {
     public float initialSpawnDelay;
     public float easyFallSpeed;
     public float hardFallSpeed;
+
+    [Tooltip("This value is a percentage applied to the timed delay multiplier every time a word is spawned, it should be between 0 and 1")]
+    [Min(0f)]
+    public float spawnDelayTimedPercentage;
     public int missesAllowed;
+
     [Tooltip("Between 0 and one")]
     [Min(0f)]
     public float hardWordChance;

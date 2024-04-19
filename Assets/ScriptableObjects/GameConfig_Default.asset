@@ -17,12 +17,13 @@ MonoBehaviour:
   initialSpawnDelay: 1
   easyFallSpeed: 0.8
   hardFallSpeed: 0.4
+  missesAllowed: 0
   hardWordChance: 0.2
   hardWordCoolDown: 5
   CPMIntervals:
   - minCPMValue: 0
     maxCPMValue: 100
-    fallSpeedMultiplier: 0.5
+    fallSpeedMultiplier: 1
     spawnDelayMultiplier: 2
   - minCPMValue: 100
     maxCPMValue: 200
@@ -34,5 +35,5 @@ MonoBehaviour:
     spawnDelayMultiplier: 1
   - minCPMValue: 300
     maxCPMValue: 1000
-    fallSpeedMultiplier: 0
-    spawnDelayMultiplier: 0
+    fallSpeedMultiplier: 1.2
+    spawnDelayMultiplier: 0.8

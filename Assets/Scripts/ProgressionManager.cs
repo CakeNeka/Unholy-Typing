@@ -10,7 +10,7 @@ public class ProgressionManager : MonoBehaviour {
 
     [SerializeField] // Just for debugging
     private float averageCPM = 0f;
-    private int wordNumber = 0;
+    private int wordNumber = 0; // number of words already typed
     private bool canSpawnHardWord = true;
     private int currentMisses = 0;
 
@@ -46,15 +46,11 @@ public class ProgressionManager : MonoBehaviour {
         }
     }
     private float CalculateSpawnDelay() {
-        // the new value should be based on the time elapsed (Time.time) and the player's CPM
         float spawnDelay = config.initialSpawnDelay
             * spawnDelayTimedMultiplier
             * gameManager.getCPMSpawnDelayMultiplier(averageCPM);
 
-        spawnDelayTimedMultiplier -= 0.01f; // more words will spawn over time
-
-        // TODO: This should be a formula
-
+        spawnDelayTimedMultiplier *= gameManager.config.spawnDelayTimedPercentage;
 
         return spawnDelay;
     }
@@ -90,8 +86,9 @@ public class ProgressionManager : MonoBehaviour {
     }
 
     public void MissWord() {
-        if (++currentMisses > gameManager.config.missesAllowed) {
+        if (currentMisses++ > gameManager.config.missesAllowed) {
             Debug.LogWarning("TODO: You just lose, this is very very bad...");
         }
+        Debug.Log($"Current misses: {currentMisses}");
     }
 }
