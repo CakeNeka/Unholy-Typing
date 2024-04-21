@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 public class RandomWordGenerator : MonoBehaviour {
@@ -17,5 +18,12 @@ public class RandomWordGenerator : MonoBehaviour {
         string leetWordsFile = GameManager.Instance.config.leetWordsFile;
         wimpWords = File.ReadAllLines(Application.streamingAssetsPath + "/" + wimpWordsFile);
         leetWords = File.ReadAllLines(Application.streamingAssetsPath + "/" + leetWordsFile);
+        for (int i = 0; i < wimpWords.Length; i++) {
+            wimpWords[i] = wimpWords[i].ToLower();
+        }
+        for (int i = 0; i < leetWords.Length; i++) {
+            leetWords[i] = leetWords[i].ToLower();
+        }
+
     }
 }

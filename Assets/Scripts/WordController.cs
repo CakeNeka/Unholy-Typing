@@ -71,4 +71,8 @@ public class WordController : MonoBehaviour {
         Assert.IsFalse(TimerRunning);
         return word.text.Length / (elapsedTime / 60f);
     }
+
+    public string getWordString() {
+        return word.text;
+    }
 }

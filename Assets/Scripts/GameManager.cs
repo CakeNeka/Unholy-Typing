@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class GameManager : MonoBehaviour {
     public static GameManager Instance { get; private set; }
 
+    public UIManager uiManager { get; private set; }
     public GameConfig config;
     public bool IsGameActive { get; private set; } = true;
     public List<WordController> WordControllers { get; private set; } = new List<WordController>();
@@ -16,6 +19,11 @@ public class GameManager : MonoBehaviour {
         } else {
             Instance = this;
         }
+    }
+
+    private void Start() {
+        uiManager = FindObjectOfType<UIManager>();
+        Assert.IsNotNull(uiManager);
     }
 
     public void AddWordController(WordController controller) {

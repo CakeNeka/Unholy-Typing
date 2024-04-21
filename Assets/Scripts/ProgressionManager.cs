@@ -8,9 +8,8 @@ public class ProgressionManager : MonoBehaviour {
     private GameManager gameManager;
     private GameConfig config;
 
-    [SerializeField] // Just for debugging
-    private float averageCPM = 0f;
-    private int wordNumber = 0; // number of words already typed
+    TypingSpeedCalculator speedCalculator;
+
     private bool canSpawnHardWord = true;
     private int currentMisses = 0;
 
@@ -19,6 +18,7 @@ public class ProgressionManager : MonoBehaviour {
     private float spawnDelayTimedMultiplier = 1f; // changes based on time
 
     private void Start() {
+        speedCalculator = new TypingSpeedCalculator();
         spawner = GetComponent<EntitySpawner>();
         gameManager = GameManager.Instance;
         config = gameManager.config;
@@ -48,7 +48,7 @@ public class ProgressionManager : MonoBehaviour {
     private float CalculateSpawnDelay() {
         float spawnDelay = config.initialSpawnDelay
             * spawnDelayTimedMultiplier
-            * gameManager.getCPMSpawnDelayMultiplier(averageCPM);
+            * gameManager.getCPMSpawnDelayMultiplier(speedCalculator.AverageCPMLast10);
 
         spawnDelayTimedMultiplier *= gameManager.config.spawnDelayTimedPercentage;
 
@@ -71,18 +71,11 @@ public class ProgressionManager : MonoBehaviour {
     }
 
     private float GenerateFallSpeed(DifficultyLevel level) {
-        return baseSpeedDictionary[level] * gameManager.GetCPMFallSpeedMultiplier(averageCPM);
+        return baseSpeedDictionary[level] * gameManager.GetCPMFallSpeedMultiplier(speedCalculator.AverageCPMLast10);
     }
 
-    public void AddToAverageCPM(float cpm) {
-        if (wordNumber == 0) {
-            averageCPM = cpm;
-        } else {
-            // It calculates the new avg based on the previous avg, the new value and the amount of values.
-            float newSum = wordNumber * averageCPM + cpm;
-            averageCPM = newSum / (wordNumber + 1);
-        }
-        wordNumber++;
+    public void AddToAverageCPM(string word, float cpm) {
+        speedCalculator.AddWordCPM(new WordCPM(word, cpm));
     }
 
     public void MissWord() {

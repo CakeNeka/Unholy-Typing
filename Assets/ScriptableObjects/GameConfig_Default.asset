@@ -14,26 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wimpWordsFile: easy.txt
   leetWordsFile: hard.txt
-  initialSpawnDelay: 1
-  easyFallSpeed: 0.8
-  hardFallSpeed: 0.4
-  missesAllowed: 0
+  initialSpawnDelay: 2
+  easyFallSpeed: 0.6
+  hardFallSpeed: 0.3
+  spawnDelayTimedPercentage: 0.999
+  missesAllowed: 3
   hardWordChance: 0.2
   hardWordCoolDown: 5
   CPMIntervals:
   - minCPMValue: 0
     maxCPMValue: 100
-    fallSpeedMultiplier: 1
+    fallSpeedMultiplier: 0.8
     spawnDelayMultiplier: 2
   - minCPMValue: 100
     maxCPMValue: 200
-    fallSpeedMultiplier: 1.2
-    spawnDelayMultiplier: 1
-  - minCPMValue: 200
-    maxCPMValue: 300
     fallSpeedMultiplier: 1
     spawnDelayMultiplier: 1
-  - minCPMValue: 300
+  - minCPMValue: 200
+    maxCPMValue: 400
+    fallSpeedMultiplier: 1
+    spawnDelayMultiplier: 1
+  - minCPMValue: 400
     maxCPMValue: 1000
     fallSpeedMultiplier: 1.2
     spawnDelayMultiplier: 0.8
