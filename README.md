@@ -13,11 +13,11 @@ _A simple typing game_
 
 <br>
 
-1. [About The Project](-About-The-Project)
-2. [Overview](-Overview)
-3. [Technologies Used](-Technologies-used)
-4. [Git and Github](-Git-and-Github)
-5. [Project Files](-Project-Files)
+1. [About The Project](#-about-the-project)
+2. [Overview](#-overview)
+3. [Technologies Used](#%EF%B8%8F-technologies-used)
+4. [Development](#-development)
+5. [Project Files](#-project-files)
   
 </details>
 
@@ -34,9 +34,15 @@ A typing game.
 
 This game has been developed using the **Unity** engine, which uses **C#** as scripting language.
 
-## 🐙 Git and Github
+## ⌨ Development
 
-You can follow the development of this game through the [issues][gh-issues] and [Github Projects kanban table][gh-projects].
+### 📅 Devlog
+
+The [devlog](./devlog.md) is just a markdown file where I add screenshots and gifs about the development process
+
+### 🐙 Git and Github
+
+You can also follow the development of this game through the [issues][gh-issues] and [Github Projects kanban table][gh-projects].
 I'm using the [Conventional Commits][conventional-commits] standard so the git log is clean and understandable.
 
 ## 💾 Project Files
@@ -50,7 +56,7 @@ I'm using the [Conventional Commits][conventional-commits] standard so the git l
 
 #### 🖤 Credits
 
-![Static Badge](https://img.shields.io/badge/Made_with_🐙_by-Martina_Victoria-pink)
+![Static Badge](https://img.shields.io/badge/Made_with_🐈_by-Martina_Victoria-pink)
 
 [gh-issues]: https://github.com/CakeNeka/Unholy-Typing/issues
 [gh-projects]: https://github.com/users/CakeNeka/projects/5/views/1
