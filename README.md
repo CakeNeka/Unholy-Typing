@@ -1,8 +1,4 @@
-﻿<div align="center">
-
-</div>
-
-# Unholy Typing
+﻿# Unholy Typing
 
 _A simple typing game_
 

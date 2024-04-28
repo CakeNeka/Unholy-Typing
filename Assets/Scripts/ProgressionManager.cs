@@ -76,6 +76,8 @@ public class ProgressionManager : MonoBehaviour {
 
     public void AddToAverageCPM(string word, float cpm) {
         speedCalculator.AddWordCPM(new WordCPM(word, cpm));
+        gameManager.UIManager.setAverageCPMText(speedCalculator.AverageCPM);
+        gameManager.UIManager.setAverageCPMLast10Text(speedCalculator.AverageCPMLast10);
     }
 
     public void MissWord() {

@@ -7,7 +7,7 @@ using UnityEngine.Assertions;
 public class GameManager : MonoBehaviour {
     public static GameManager Instance { get; private set; }
 
-    public UIManager uiManager { get; private set; }
+    public UIManager UIManager { get; private set; }
     public GameConfig config;
     public bool IsGameActive { get; private set; } = true;
     public List<WordController> WordControllers { get; private set; } = new List<WordController>();
@@ -22,8 +22,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private void Start() {
-        uiManager = FindObjectOfType<UIManager>();
-        Assert.IsNotNull(uiManager);
+        UIManager = FindObjectOfType<UIManager>();
     }
 
     public void AddWordController(WordController controller) {
@@ -38,7 +37,7 @@ public class GameManager : MonoBehaviour {
             }
         }
         Debug.LogError($"FATAL ERROR: Typing power {cpm} is superhuman, please proceed to die");
-        return 0;
+        return 1;
     }
 
     public float getCPMSpawnDelayMultiplier(float cpm) {
@@ -48,7 +47,7 @@ public class GameManager : MonoBehaviour {
             }
         }
         Debug.LogError($"FATAL ERROR: Typing power {cpm} is superhuman");
-        return 0;
+        return 1;
     }
 
 }

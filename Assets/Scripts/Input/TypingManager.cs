@@ -75,7 +75,9 @@ public class TypingManager : MonoBehaviour {
     }
 
     public void stopFocus() {
-        activeWord.ToggleTimer();
-        activeWord = null;
+        if (activeWord != null) {
+            activeWord.ToggleTimer();
+            activeWord = null;
+        }
     }
 }

@@ -17,9 +17,7 @@ public class TypingSpeedCalculator {
 
     public float AverageCPMLast10 {
         get {
-            // return last10RunningAverageCPM;
             return typedWords.Count() > 0 ?
-                // typedWords.Take(10).Select(c => c.cpm).Average()
                 typedWords.Skip(Math.Max(0, typedWords.Count() - 10)).Select(c => c.cpm).Average()
                 :
                 0f;
