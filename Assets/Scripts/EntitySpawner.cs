@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EntitySpawner : MonoBehaviour {
@@ -7,6 +5,10 @@ public class EntitySpawner : MonoBehaviour {
     private GameManager gameManager;
     [SerializeField]
     private GameObject wordPrefab;
+    [SerializeField]
+    private float verticalSpawnOffset;
+    [SerializeField]
+    private float horizontalSpawnOffset;
     private RandomWordGenerator wordGenerator;
 
     private void Start() {
@@ -37,17 +39,15 @@ public class EntitySpawner : MonoBehaviour {
     private Vector3 GenerateSpawnPosition(DifficultyLevel difficulty) {
         Camera cam = Camera.main;
 
-        float offsetX = 2f; // FIXME: this hardcoded value should be based on the word's max width
-        float offsetY = 2f;
         Vector3 topLeftCorner = cam.ViewportToWorldPoint(new Vector3(0, 1, cam.nearClipPlane));
         Vector3 topRightCorner = cam.ViewportToWorldPoint(new Vector3(1, 1, cam.nearClipPlane));
 
         float xCoord = difficulty == DifficultyLevel.Easy ?
-            Random.Range(topRightCorner.x - offsetX, topLeftCorner.x + offsetX)
+            Random.Range(topRightCorner.x - horizontalSpawnOffset, topLeftCorner.x + horizontalSpawnOffset)
             :
             (topLeftCorner.x + topRightCorner.x) / 2;
 
-        float yCoord = topRightCorner.y + offsetY;
+        float yCoord = topRightCorner.y + verticalSpawnOffset;
 
         return new Vector3(xCoord, yCoord);
     }

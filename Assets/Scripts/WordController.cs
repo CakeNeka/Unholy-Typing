@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.TextCore.Text;
-using UnityEngine.UI;
 
 /// <summary>
 /// There is one for every active word

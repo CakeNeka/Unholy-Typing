@@ -34,7 +34,7 @@ public class ProgressionManager : MonoBehaviour {
         while (gameManager.IsGameActive) {
             WordController spawnedWord;
             DifficultyLevel wordLevel;
-            // wait spawn delay
+            // wait for spawn delay
             yield return new WaitForSeconds(CalculateSpawnDelay());
 
             // decide whether to generate hard or easy word
@@ -82,7 +82,7 @@ public class ProgressionManager : MonoBehaviour {
 
     public void MissWord() {
         if (currentMisses++ > gameManager.config.missesAllowed) {
-            Debug.LogWarning("TODO: You just lose, this is very very bad...");
+            gameManager.GameOver();
         }
         Debug.Log($"Current misses: {currentMisses}");
     }

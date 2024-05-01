@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 public class TypingSpeedCalculator {
 
@@ -18,6 +17,7 @@ public class TypingSpeedCalculator {
     public float AverageCPMLast10 {
         get {
             return typedWords.Count() > 0 ?
+                // average of the last 10 elements of the list
                 typedWords.Skip(Math.Max(0, typedWords.Count() - 10)).Select(c => c.cpm).Average()
                 :
                 0f;

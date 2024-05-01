@@ -8,8 +8,8 @@ using UnityEngine;
 [Serializable]
 public class GameConfig : ScriptableObject {
     [Header("Random words text files")]
-    public string wimpWordsFile;
-    public string leetWordsFile;
+    public string easyWordsFile;
+    public string hardWordsFile;
 
     [Header("Game parameters")]
     public float initialSpawnDelay;

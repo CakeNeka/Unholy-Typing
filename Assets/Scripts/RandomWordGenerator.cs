@@ -1,28 +1,26 @@
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using UnityEngine;
 
 public class RandomWordGenerator : MonoBehaviour {
-    private string[] wimpWords;
-    private string[] leetWords;
+    private string[] easyWords;
+    private string[] hardWords;
 
     public Word generateWord(DifficultyLevel difficulty) {
         if (difficulty == DifficultyLevel.Easy)
-            return new Word(wimpWords[Random.Range(0, wimpWords.Length)], difficulty);
-        return new Word(leetWords[Random.Range(0, leetWords.Length)], difficulty);
+            return new Word(easyWords[Random.Range(0, easyWords.Length)], difficulty);
+        return new Word(hardWords[Random.Range(0, hardWords.Length)], difficulty);
     }
 
     private void Start() {
-        string wimpWordsFile = GameManager.Instance.config.wimpWordsFile;
-        string leetWordsFile = GameManager.Instance.config.leetWordsFile;
-        wimpWords = File.ReadAllLines(Application.streamingAssetsPath + "/" + wimpWordsFile);
-        leetWords = File.ReadAllLines(Application.streamingAssetsPath + "/" + leetWordsFile);
-        for (int i = 0; i < wimpWords.Length; i++) {
-            wimpWords[i] = wimpWords[i].ToLower();
+        string easyWordsFile = GameManager.Instance.config.easyWordsFile;
+        string hardWordsFile = GameManager.Instance.config.hardWordsFile;
+        easyWords = File.ReadAllLines(Application.streamingAssetsPath + "/" + easyWordsFile);
+        hardWords = File.ReadAllLines(Application.streamingAssetsPath + "/" + hardWordsFile);
+        for (int i = 0; i < easyWords.Length; i++) {
+            easyWords[i] = easyWords[i].ToLower();
         }
-        for (int i = 0; i < leetWords.Length; i++) {
-            leetWords[i] = leetWords[i].ToLower();
+        for (int i = 0; i < hardWords.Length; i++) {
+            hardWords[i] = hardWords[i].ToLower();
         }
 
     }

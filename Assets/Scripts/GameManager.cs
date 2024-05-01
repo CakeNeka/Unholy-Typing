@@ -1,8 +1,7 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Assertions;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     public static GameManager Instance { get; private set; }
@@ -13,7 +12,6 @@ public class GameManager : MonoBehaviour {
     public List<WordController> WordControllers { get; private set; } = new List<WordController>();
 
     private void Awake() {
-        // If there is an instance, and it's not me, delete myself.
         if (Instance != null && Instance != this) {
             Destroy(this);
         } else {
@@ -29,14 +27,13 @@ public class GameManager : MonoBehaviour {
         WordControllers.Add(controller);
     }
 
-    // FIXME Duplicated code
     public float GetCPMFallSpeedMultiplier(float cpm) {
         foreach (Interval interval in config.CPMIntervals) {
             if (cpm >= interval.minCPMValue && cpm < interval.maxCPMValue) {
                 return interval.fallSpeedMultiplier;
             }
         }
-        Debug.LogError($"FATAL ERROR: Typing power {cpm} is superhuman, please proceed to die");
+        Debug.LogError($"ERROR: Typing power {cpm} is too high");
         return 1;
     }
 
@@ -46,8 +43,13 @@ public class GameManager : MonoBehaviour {
                 return interval.spawnDelayMultiplier;
             }
         }
-        Debug.LogError($"FATAL ERROR: Typing power {cpm} is superhuman");
+        Debug.LogError($"ERROR: Typing power {cpm} is too high");
         return 1;
     }
 
+    public void GameOver() {
+        // TODO Gameover screen w/ options go to menu and play again
+        IsGameActive = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }
