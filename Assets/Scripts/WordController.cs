@@ -9,7 +9,7 @@ using UnityEngine.Assertions;
 public class WordController : MonoBehaviour {
 
     private float startTime;
-    private float elapsedTime = 0f;
+    private float secondsElapsed = 0f;
     public bool TimerRunning { get; private set; } = false;
 
     private string styleOpen = "<style=\"typed\">";
@@ -55,16 +55,16 @@ public class WordController : MonoBehaviour {
 
     public void ToggleTimer() {
         if (TimerRunning) {
-            elapsedTime += Time.time - startTime;
+            secondsElapsed += Time.time - startTime;
         } else {
             startTime = Time.time;
         }
         TimerRunning = !TimerRunning;
     }
 
-    public float getCPM() {
+    public float getSecondsElapsed() {
         Assert.IsFalse(TimerRunning);
-        return word.text.Length / (elapsedTime / 60f);
+        return secondsElapsed;
     }
 
     public string getWordString() {

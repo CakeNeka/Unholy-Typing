@@ -32,7 +32,7 @@ public class TypingManager : MonoBehaviour {
             if (activeWord.WordTyped()) {
                 // remove word if already typed
                 activeWord.ToggleTimer();
-                progressionManager.AddToAverageCPM(activeWord.getWordString(), activeWord.getCPM());
+                progressionManager.AddToAverageCPM(activeWord.getWordString(), activeWord.getSecondsElapsed());
                 activeWord.DestroySelf();
                 wordControllers.Remove(activeWord);
                 activeWord = null;

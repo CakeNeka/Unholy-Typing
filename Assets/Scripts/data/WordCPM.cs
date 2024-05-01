@@ -1,9 +1,9 @@
 public struct WordCPM {
     public string word;
-    public float cpm;
+    public float seconds;
 
-    public WordCPM(string word, float cpm) {
+    public WordCPM(string word, float time) {
         this.word = word;
-        this.cpm = cpm;
+        this.seconds = time;
     }
 }

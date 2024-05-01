@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour {
     public float GetCPMFallSpeedMultiplier(float cpm) {
         foreach (Interval interval in config.CPMIntervals) {
             if (cpm >= interval.minCPMValue && cpm < interval.maxCPMValue) {
+                Debug.Log(interval.fallSpeedMultiplier + " | " + interval.spawnDelayMultiplier);
                 return interval.fallSpeedMultiplier;
             }
         }

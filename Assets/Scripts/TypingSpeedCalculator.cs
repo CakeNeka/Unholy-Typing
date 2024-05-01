@@ -7,24 +7,37 @@ public class TypingSpeedCalculator {
     private List<WordCPM> typedWords = new List<WordCPM>();
     public float AverageCPM {
         get {
+            return CalculateTypingSpeedUnit(
+                typedWords.Select(c => c.word.Count()).Sum(),
+                typedWords.Select(c => c.seconds).Sum()
+            );
+            // return typedWords.Select(c => c.word.Count()).Sum() / (typedWords.Select(c => c.seconds).Sum() / 60);
+            /*
             return typedWords.Count() > 0 ?
                 typedWords.Select(c => c.cpm).Average()
                 :
                 0f;
+            */
         }
     }
 
     public float AverageCPMLast10 {
         get {
-            return typedWords.Count() > 0 ?
-                // average of the last 10 elements of the list
-                typedWords.Skip(Math.Max(0, typedWords.Count() - 10)).Select(c => c.cpm).Average()
-                :
-                0f;
+            if (typedWords.Count() <= 10)
+                return AverageCPM;
+
+            return CalculateTypingSpeedUnit(
+                typedWords.TakeLast(10).Select(c => c.word.Count()).Sum(),
+                typedWords.TakeLast(10).Select(c => c.seconds).Sum()
+            );
         }
     }
 
     public void AddWordCPM(WordCPM wordSpeed) {
         typedWords.Add(wordSpeed);
+    }
+
+    private float CalculateTypingSpeedUnit(int characters, float secondsElapsed) {
+        return characters / (secondsElapsed / 60) * GameManager.Instance.config.typingSpeedUnit;
     }
 }

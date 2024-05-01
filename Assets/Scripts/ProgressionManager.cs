@@ -74,8 +74,8 @@ public class ProgressionManager : MonoBehaviour {
         return baseSpeedDictionary[level] * gameManager.GetCPMFallSpeedMultiplier(speedCalculator.AverageCPMLast10);
     }
 
-    public void AddToAverageCPM(string word, float cpm) {
-        speedCalculator.AddWordCPM(new WordCPM(word, cpm));
+    public void AddToAverageCPM(string word, float time) {
+        speedCalculator.AddWordCPM(new WordCPM(word, time));
         gameManager.UIManager.setAverageCPMText(speedCalculator.AverageCPM);
         gameManager.UIManager.setAverageCPMLast10Text(speedCalculator.AverageCPMLast10);
     }
