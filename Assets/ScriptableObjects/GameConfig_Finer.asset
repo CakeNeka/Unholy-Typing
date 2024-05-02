@@ -24,17 +24,30 @@ MonoBehaviour:
   CPMIntervals:
   - minCPMValue: 0
     maxCPMValue: 100
-    fallSpeedMultiplier: 0.8
-    spawnDelayMultiplier: 2
+    fallSpeedMultiplier: 0.5
+    spawnDelayMultiplier: 2.5
   - minCPMValue: 100
     maxCPMValue: 200
-    fallSpeedMultiplier: 1
-    spawnDelayMultiplier: 1
+    fallSpeedMultiplier: 0.5
+    spawnDelayMultiplier: 2
   - minCPMValue: 200
+    maxCPMValue: 300
+    fallSpeedMultiplier: 0.7
+    spawnDelayMultiplier: 1.4
+  - minCPMValue: 300
     maxCPMValue: 400
-    fallSpeedMultiplier: 1
-    spawnDelayMultiplier: 1
+    fallSpeedMultiplier: 0.9
+    spawnDelayMultiplier: 1.2
   - minCPMValue: 400
-    maxCPMValue: 1000
+    maxCPMValue: 500
     fallSpeedMultiplier: 1.2
     spawnDelayMultiplier: 0.8
+  - minCPMValue: 500
+    maxCPMValue: 700
+    fallSpeedMultiplier: 1.4
+    spawnDelayMultiplier: 0.7
+  - minCPMValue: 500
+    maxCPMValue: 700
+    fallSpeedMultiplier: 1.6
+    spawnDelayMultiplier: 0.5
+  typingSpeedUnit: 1

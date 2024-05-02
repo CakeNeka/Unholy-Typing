@@ -11,13 +11,6 @@ public class TypingSpeedCalculator {
                 typedWords.Select(c => c.word.Count()).Sum(),
                 typedWords.Select(c => c.seconds).Sum()
             );
-            // return typedWords.Select(c => c.word.Count()).Sum() / (typedWords.Select(c => c.seconds).Sum() / 60);
-            /*
-            return typedWords.Count() > 0 ?
-                typedWords.Select(c => c.cpm).Average()
-                :
-                0f;
-            */
         }
     }
 
@@ -38,6 +31,6 @@ public class TypingSpeedCalculator {
     }
 
     private float CalculateTypingSpeedUnit(int characters, float secondsElapsed) {
-        return characters / (secondsElapsed / 60) * GameManager.Instance.config.typingSpeedUnit;
+        return characters / (secondsElapsed / 60) * GameManager.Instance.config.speedUnit.CpmConversionFactor;
     }
 }

@@ -28,6 +28,12 @@ public class GameConfig : ScriptableObject {
 
     [Header("Multipliers")]
     public List<Interval> CPMIntervals;
-    public float typingSpeedUnit;
+
+    [HideInInspector]
+    public TypingSpeedUnit speedUnit;
+    public string typingSpeedUnitString;
+    private void Start() {
+        speedUnit = TypingSpeedUnits.getUnit(typingSpeedUnitString);
+    }
 
 }
