@@ -8,7 +8,7 @@ public class ProgressionManager : MonoBehaviour {
     private GameManager gameManager;
     private GameConfig config;
 
-    TypingSpeedCalculator speedCalculator;
+    private TypingSpeedCalculator speedCalculator;
 
     private bool canSpawnHardWord = true;
     private int currentMisses = 0;

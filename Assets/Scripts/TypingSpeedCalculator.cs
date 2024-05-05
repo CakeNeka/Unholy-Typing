@@ -5,8 +5,12 @@ using System.Linq;
 public class TypingSpeedCalculator {
 
     private List<WordCPM> typedWords = new List<WordCPM>();
+    private float defaultTypingSpeed = 100;
     public float AverageCPM {
         get {
+            if (typedWords.Count() == 0)
+                return defaultTypingSpeed;
+            
             return CalculateTypingSpeedUnit(
                 typedWords.Select(c => c.word.Count()).Sum(),
                 typedWords.Select(c => c.seconds).Sum()
@@ -31,6 +35,6 @@ public class TypingSpeedCalculator {
     }
 
     private float CalculateTypingSpeedUnit(int characters, float secondsElapsed) {
-        return characters / (secondsElapsed / 60) * GameManager.Instance.config.speedUnit.CpmConversionFactor;
+        return characters / (secondsElapsed / 60);
     }
 }

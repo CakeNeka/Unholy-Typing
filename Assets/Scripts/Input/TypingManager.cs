@@ -12,6 +12,7 @@ public class TypingManager : MonoBehaviour {
     private List<WordController> wordControllers;
     private WordController activeWord = null;
     private ProgressionManager progressionManager;
+    private ScoreCalculator scoreCalculator;
 
     private void Start() {
         wordControllers = GameManager.Instance.WordControllers;
@@ -74,7 +75,7 @@ public class TypingManager : MonoBehaviour {
         return false;
     }
 
-    public void stopFocus() {
+    public void StopFocus() {
         if (activeWord != null) {
             activeWord.ToggleTimer();
             activeWord = null;

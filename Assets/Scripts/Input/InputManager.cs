@@ -4,12 +4,14 @@ using UnityEngine;
 public class InputManager : MonoBehaviour {
 
     private TypingManager typingManager;
+
     private void Start() {
         typingManager = GetComponent<TypingManager>();
     }
+
     void Update() {
         if (Input.GetKeyDown(KeyCode.Tab)) {
-            typingManager.stopFocus();
+            typingManager.StopFocus();
         }
 
         foreach (char letter in Input.inputString) {

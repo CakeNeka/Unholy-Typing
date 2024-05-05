@@ -50,4 +50,4 @@ MonoBehaviour:
     maxCPMValue: 700
     fallSpeedMultiplier: 1.6
     spawnDelayMultiplier: 0.5
-  typingSpeedUnit: 1
+  typingSpeedUnitString: cpm
