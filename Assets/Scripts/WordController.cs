@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -21,6 +22,14 @@ public class WordController : MonoBehaviour {
 
     private void Awake() {
         displayText = GetComponent<TMP_Text>();
+    }
+
+    private void Start() {
+        Theme theme = GameManager.Instance.Theme;
+        displayText.color = theme.foreground;
+
+        styleOpen += $"<color=#{theme.foregroundTyped.ToHexString()}>";
+        styleClose = "</color>" + styleClose;
     }
 
     private void Update() {

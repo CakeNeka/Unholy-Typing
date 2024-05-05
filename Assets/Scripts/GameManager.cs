@@ -4,12 +4,26 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
+    private static Color getColor(string hexColor) {
+        if (ColorUtility.TryParseHtmlString(hexColor, out Color color)) {
+            return color;
+        }
+        return Color.black;
+    }
+    private static Theme fallbackTheme = new(
+        background: getColor("#323437"),
+        foreground: getColor("#d1d0c5"),
+        foregroundTyped: getColor("#e2b714"),
+        foregroundUI: getColor("#ca4754")
+    );
+
     public static GameManager Instance { get; private set; }
 
     public UIManager UIManager { get; private set; }
     public GameConfig config;
     public bool IsGameActive { get; private set; } = true;
     public List<WordController> WordControllers { get; private set; } = new List<WordController>();
+    public Theme Theme { get; private set; } = fallbackTheme;
 
     private void Awake() {
         if (Instance != null && Instance != this) {
@@ -30,7 +44,6 @@ public class GameManager : MonoBehaviour {
     public float GetCPMFallSpeedMultiplier(float cpm) {
         foreach (Interval interval in config.CPMIntervals) {
             if (cpm >= interval.minCPMValue && cpm < interval.maxCPMValue) {
-                Debug.Log(interval.fallSpeedMultiplier + " | " + interval.spawnDelayMultiplier);
                 return interval.fallSpeedMultiplier;
             }
         }
