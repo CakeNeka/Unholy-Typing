@@ -4,18 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
-    private static Color getColor(string hexColor) {
-        if (ColorUtility.TryParseHtmlString(hexColor, out Color color)) {
-            return color;
-        }
-        return Color.black;
-    }
-    private static Theme fallbackTheme = new(
-        background: getColor("#323437"),
-        foreground: getColor("#d1d0c5"),
-        foregroundTyped: getColor("#e2b714"),
-        foregroundUI: getColor("#ca4754")
-    );
+    private static Theme fallbackTheme = Themes.vscode;
 
     public static GameManager Instance { get; private set; }
 
