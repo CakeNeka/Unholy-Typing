@@ -2,7 +2,9 @@
 
 _A simple typing game_
 
-</div>
+
+![](media/ut_gameplay.gif)
+
 
 <details open="open">
   <summary><b>Table of Contents</b></summary>
