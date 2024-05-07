@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,6 +7,8 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager Instance { get; private set; }
 
+
+    public ScoreCalculator ScoreCalculator { get; private set; } = new ScoreCalculator();
     public UIManager UIManager { get; private set; }
     public GameConfig config;
     public bool IsGameActive { get; private set; } = true;
@@ -44,6 +45,16 @@ public class GameManager : MonoBehaviour {
         foreach (Interval interval in config.CPMIntervals) {
             if (cpm >= interval.minCPMValue && cpm < interval.maxCPMValue) {
                 return interval.spawnDelayMultiplier;
+            }
+        }
+        Debug.LogError($"ERROR: Typing power {cpm} is too high");
+        return 1;
+    }
+
+    public float getCPMScoreMultiplier(float cpm) {
+        foreach (Interval interval in config.CPMIntervals) {
+            if (cpm >= interval.minCPMValue && cpm < interval.maxCPMValue) {
+                return interval.scoreMultiplier;
             }
         }
         Debug.LogError($"ERROR: Typing power {cpm} is too high");

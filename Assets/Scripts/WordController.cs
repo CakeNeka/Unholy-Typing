@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -11,14 +12,16 @@ public class WordController : MonoBehaviour {
 
     private float startTime;
     private float secondsElapsed = 0f;
-    public bool TimerRunning { get; private set; } = false;
 
     private string styleOpen = "<style=\"typed\">";
     private string styleClose = "</style>";
     private int index = 0; // Number of letters already typed in this word
     private Word word = Word.defaultWord;
     private TMP_Text displayText;
+
+    public int StrokesMissed { get; private set; } = 0;
     public float FallSpeed { get; set; } = 1f; // to be set by GameManager / ProgressManager...
+    public bool TimerRunning { get; private set; } = false;
 
     private void Awake() {
         displayText = GetComponent<TMP_Text>();
@@ -71,12 +74,16 @@ public class WordController : MonoBehaviour {
         TimerRunning = !TimerRunning;
     }
 
-    public float getSecondsElapsed() {
+    public float GetSecondsElapsed() {
         Assert.IsFalse(TimerRunning);
         return secondsElapsed;
     }
 
-    public string getWordString() {
+    public string GetWordString() {
         return word.text;
+    }
+
+    public void AddMiss() {
+        StrokesMissed++;
     }
 }

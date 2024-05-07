@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 public class TypingSpeedCalculator {
 
@@ -27,6 +28,26 @@ public class TypingSpeedCalculator {
                 typedWords.TakeLast(10).Select(c => c.word.Count()).Sum(),
                 typedWords.TakeLast(10).Select(c => c.seconds).Sum()
             );
+        }
+    }
+
+    public float Accuracy {
+        get {
+            if (typedWords.Count() == 0)
+                return 1;
+            
+            return (float)typedWords.Select(c => c.word.Count()).Sum() /
+               typedWords.Select(c => c.word.Count() + c.misses).Sum();
+        }
+    }
+
+    public float AccuracyLast10 {
+        get {
+            if (typedWords.Count() <= 10)
+                return Accuracy;
+            
+            return (float)typedWords.TakeLast(10).Select(c => c.word.Count()).Sum() /
+               typedWords.TakeLast(10).Select(c => c.word.Count() + c.misses).Sum();
         }
     }
 

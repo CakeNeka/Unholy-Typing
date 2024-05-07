@@ -29,6 +29,13 @@ public class GameConfig : ScriptableObject {
     [Header("Multipliers")]
     public List<Interval> CPMIntervals;
 
+
+    [Header("Score variables")]
+    public int perfectWordBonus;
+    public int pointsPerCharacter;
+    
+
+
     [HideInInspector]
     public TypingSpeedUnit speedUnit;
     public string typingSpeedUnitString;

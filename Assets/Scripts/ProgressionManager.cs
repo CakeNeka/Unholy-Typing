@@ -16,11 +16,13 @@ public class ProgressionManager : MonoBehaviour {
     private Dictionary<DifficultyLevel, float> baseSpeedDictionary;
 
     private float spawnDelayTimedMultiplier = 1f; // changes based on time
+    private ScoreCalculator scoreCalculator;
 
     private void Start() {
         speedCalculator = new TypingSpeedCalculator();
         spawner = GetComponent<EntitySpawner>();
         gameManager = GameManager.Instance;
+        scoreCalculator = gameManager.ScoreCalculator;
         config = gameManager.config;
         baseSpeedDictionary = new Dictionary<DifficultyLevel, float> {
             [DifficultyLevel.Easy] = config.easyFallSpeed,
@@ -74,10 +76,15 @@ public class ProgressionManager : MonoBehaviour {
         return baseSpeedDictionary[level] * gameManager.GetCPMFallSpeedMultiplier(speedCalculator.AverageCPMLast10);
     }
 
-    public void AddToAverageCPM(string word, float time) {
-        speedCalculator.AddWordCPM(new WordCPM(word, time));
+    public void AddToAverageCPM(WordController word) {
+        WordCPM wordCPM = new WordCPM(word.GetWordString(), word.GetSecondsElapsed(), word.StrokesMissed);
+
+        speedCalculator.AddWordCPM(wordCPM);
+        scoreCalculator.WordTyped(wordCPM, speedCalculator.AverageCPMLast10);
+
         gameManager.UIManager.setAverageCPMText(speedCalculator.AverageCPM);
         gameManager.UIManager.setAverageCPMLast10Text(speedCalculator.AverageCPMLast10);
+        Debug.Log($"Score: {scoreCalculator.CurrentScore} | Accuracy: {speedCalculator.AccuracyLast10}");
     }
 
     public void MissWord() {

@@ -8,4 +8,6 @@ public struct Interval {
 
     public float fallSpeedMultiplier;
     public float spawnDelayMultiplier;
+
+    public float scoreMultiplier;
 }

@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -12,7 +10,6 @@ public class TypingManager : MonoBehaviour {
     private List<WordController> wordControllers;
     private WordController activeWord = null;
     private ProgressionManager progressionManager;
-    private ScoreCalculator scoreCalculator;
 
     private void Start() {
         wordControllers = GameManager.Instance.WordControllers;
@@ -33,18 +30,20 @@ public class TypingManager : MonoBehaviour {
             if (activeWord.WordTyped()) {
                 // remove word if already typed
                 activeWord.ToggleTimer();
-                progressionManager.AddToAverageCPM(activeWord.getWordString(), activeWord.getSecondsElapsed());
+                progressionManager.AddToAverageCPM(activeWord);
+
                 activeWord.DestroySelf();
                 wordControllers.Remove(activeWord);
                 activeWord = null;
             }
         } else {
+            activeWord?.AddMiss();
             // TODO Penalize wrong letter typed
             // activeWordWord.Penalize();
         }
     }
 
-    public void destroyMissedWord(WordController word) {
+    public void DestroyMissedWord(WordController word) {
         if (activeWord == word) {
             activeWord = null;
         }
@@ -54,7 +53,7 @@ public class TypingManager : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Word") && other.TryGetComponent<WordController>(out WordController word)) {
-            destroyMissedWord(word);
+            DestroyMissedWord(word);
             progressionManager.MissWord();
         }
     }
