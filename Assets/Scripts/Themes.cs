@@ -21,4 +21,18 @@ public class Themes {
         foregroundTyped: getColor("#007acc"),
         foregroundUI: getColor("#f44747")
     );
+
+    public static readonly Theme neon = new(
+        background: getColor("#00002e"),
+        foreground: getColor("#f1deef"),
+        foregroundTyped: getColor("#ff3d8b"),
+        foregroundUI: getColor("#8fecff")
+    );
+
+    public static readonly Theme darling = new(
+        background: getColor("#fec8cd"),
+        foreground: getColor("#ffffff"),
+        foregroundTyped: getColor("#a30000"),
+        foregroundUI: getColor("#2e7dde")
+    );
 }

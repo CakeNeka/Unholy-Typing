@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
-    private static Theme fallbackTheme = Themes.vscode;
+    private static Theme fallbackTheme = Themes.neon;
 
     public static GameManager Instance { get; private set; }
 
