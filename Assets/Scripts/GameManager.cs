@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -62,8 +63,12 @@ public class GameManager : MonoBehaviour {
     }
 
     public void GameOver() {
-        // TODO Gameover screen w/ options go to menu and play again
         IsGameActive = false;
+        Time.timeScale = 0;
+        UIManager.ShowGameOverMenu();
+    }
+
+    public void RestartGame() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

@@ -82,8 +82,8 @@ public class ProgressionManager : MonoBehaviour {
         speedCalculator.AddWordCPM(wordCPM);
         scoreCalculator.WordTyped(wordCPM, speedCalculator.AverageCPMLast10);
 
-        gameManager.UIManager.setAverageCPMText(speedCalculator.AverageCPM);
-        gameManager.UIManager.setAverageCPMLast10Text(speedCalculator.AverageCPMLast10);
+        gameManager.UIManager.SetAverageCPMText(speedCalculator.AverageCPM);
+        gameManager.UIManager.SetAverageCPMLast10Text(speedCalculator.AverageCPMLast10);
         Debug.Log($"Score: {scoreCalculator.CurrentScore} | Accuracy: {speedCalculator.AccuracyLast10}");
     }
 
