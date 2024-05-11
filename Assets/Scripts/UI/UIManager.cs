@@ -1,8 +1,5 @@
 using UnityEngine;
 using TMPro;
-using UnityEditor;
-using UnityEngine.SceneManagement;
-using Unity.VisualScripting;
 
 public class UIManager : MonoBehaviour {
     private Theme theme;

@@ -1,9 +1,13 @@
-﻿# Unholy Typing
+﻿<div align="center">
+
+<img src="media/ph_logo.png" width=200/>
+
+# Unholy Typing
 
 _A simple typing game_
 
+</div>
 
-![](media/ut_gameplay.gif)
 
 
 <details open="open">
@@ -24,6 +28,14 @@ _A simple typing game_
 A typing game.
 
 ## 🎨 Overview
+
+A minimalistic falling words typing game where the player must type words that appear on the screen before they fall down. The visuals are inspired by the open source typing test [monkeytype.com][monkeytype-gh]
+
+Some **key features** of Unholy Typing are:
+
+- **Minimalistic design:** focused on simplicity and readability
+- **Customization:** Several themes available
+- **Accessibility:** Game difficulty changes based on the player's speed
 
 ## ⚙️ Technologies used
 
@@ -56,6 +68,10 @@ I'm using the [Conventional Commits][conventional-commits] standard so the git l
 
 ![Static Badge](https://img.shields.io/badge/Made_with_🐈_by-Martina_Victoria-pink)
 
+Placeholder logo is [keyboard material icon][keyboard-icon]
+
 [gh-issues]: https://github.com/CakeNeka/Unholy-Typing/issues
 [gh-projects]: https://github.com/users/CakeNeka/projects/5/views/1
 [conventional-commits]: https://www.conventionalcommits.org/en/v1.0.0/
+[monkeytype-gh]: https://github.com/monkeytypegame/monkeytype
+[keyboard-icon]: https://fonts.google.com/icons?selected=Material+Symbols+Outlined:keyboard_alt:FILL@0;wght@400;GRAD@0;opsz@48&icon.query=keyboard&icon.size=512&icon.color=%23e2b714
