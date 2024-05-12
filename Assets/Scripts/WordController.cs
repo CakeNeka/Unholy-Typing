@@ -13,8 +13,10 @@ public class WordController : MonoBehaviour {
     private float startTime;
     private float secondsElapsed = 0f;
 
-    private string styleOpen = "<style=\"typed\">";
-    private string styleClose = "</style>";
+    private string styleSelectedOpen = "<style=\"Selected\">";
+    private string styleSelectedClose = "</style>";
+    private string styleTypedOpen = "<style=\"typed\">";
+    private string styleTypedClose = "</style>";
     private int index = 0; // Number of letters already typed in this word
     private Word word = Word.defaultWord;
     private TMP_Text displayText;
@@ -31,8 +33,8 @@ public class WordController : MonoBehaviour {
         Theme theme = GameManager.Instance.Theme;
         displayText.color = theme.foreground;
 
-        styleOpen += $"<color=#{theme.foregroundTyped.ToHexString()}>";
-        styleClose = "</color>" + styleClose;
+        styleTypedOpen += $"<color=#{theme.foregroundTyped.ToHexString()}>";
+        styleTypedClose = "</color>" + styleTypedClose;
     }
 
     private void Update() {
@@ -53,7 +55,9 @@ public class WordController : MonoBehaviour {
         Assert.IsFalse(index > word.text.Length);
 
         // add rich text tags
-        string newText = styleOpen + word.text.Substring(0, index) + styleClose + word.text.Substring(index);
+        string newText = 
+            $"{styleSelectedOpen}{styleTypedOpen}{word.text.Substring(0, index)}{styleTypedClose}{word.text.Substring(index)}{styleSelectedClose}";
+
         displayText.text = newText;
     }
 
@@ -68,6 +72,8 @@ public class WordController : MonoBehaviour {
     public void ToggleTimer() {
         if (TimerRunning) {
             secondsElapsed += Time.time - startTime;
+            string newText = $"{styleTypedOpen}{word.text.Substring(0, index)}{styleTypedClose}{word.text.Substring(index)}";
+            displayText.text = newText;
         } else {
             startTime = Time.time;
         }
