@@ -4,18 +4,41 @@ using TMPro;
 using UnityEngine;
 
 public class SettingsMenu : MonoBehaviour {
+    [SerializeField] private GameConfig config;
     [SerializeField] private TMP_Dropdown themesDropdown;
+    [SerializeField] private TMP_Dropdown langDropdown;
     List<string> stringThemes;
 
     private void Start() {
         themesDropdown.ClearOptions();
         stringThemes = Themes.GetThemeNames();
         themesDropdown.AddOptions(stringThemes);
+
+        int selectedIndex = stringThemes.IndexOf(GameManager.selectedTheme.name);
+        if (selectedIndex != -1) {
+            themesDropdown.value = selectedIndex;
+        }
+
+        if (config.easyWordsFile == "easy.txt") {
+            langDropdown.value = 0;
+        } else {
+            langDropdown.value = 1;
+        }
     }
 
     public void HandleThemeChange(int val) {
         Theme selectedTheme = Themes.GetTheme(stringThemes[val]);
-        Debug.Log($"Selected theme: {selectedTheme}");
         GameManager.selectedTheme = selectedTheme;
+    }
+
+    public void HandleLanguageChange(int val) {
+        if (val == 0) {
+            config.easyWordsFile = "easy.txt";
+            config.hardWordsFile = "hard.txt";
+        } 
+        if (val == 1) {
+            config.easyWordsFile = "easy_es.txt";
+            config.hardWordsFile = "hard_es.txt";
+        }
     }
 }

@@ -11,6 +11,7 @@ public class Themes {
 
 
     public static readonly Theme serikaDark = new(
+        name: "Serika Dark",
         background: getColor("#323437"),
         foreground: getColor("#d1d0c5"),
         foregroundTyped: getColor("#e2b714"),
@@ -18,6 +19,7 @@ public class Themes {
     );
 
     public static readonly Theme vscode = new(
+        name: "VsCode",
         background: getColor("#1e1e1e"),
         foreground: getColor("#d4d4d4"),
         foregroundTyped: getColor("#007acc"),
@@ -25,6 +27,7 @@ public class Themes {
     );
 
     public static readonly Theme neon = new(
+        name: "Neon",
         background: getColor("#00002e"),
         foreground: getColor("#f1deef"),
         foregroundTyped: getColor("#ff3d8b"),
@@ -32,6 +35,7 @@ public class Themes {
     );
 
     public static readonly Theme darling = new(
+        name: "Darling",
         background: getColor("#fec8cd"),
         foreground: getColor("#ffffff"),
         foregroundTyped: getColor("#a30000"),
@@ -39,10 +43,10 @@ public class Themes {
     );
 
     private static Dictionary<string, Theme> themes = new Dictionary<string, Theme> {
-        ["Serika Dark"] = serikaDark,
-        ["VsCode"] = vscode,
-        ["Neon"] = neon,
-        ["Darling"] = darling,
+        [serikaDark.name] = serikaDark,
+        [vscode.name] = vscode,
+        [neon.name] = neon,
+        [darling.name] = darling,
     };
 
     public static List<string> GetThemeNames() {

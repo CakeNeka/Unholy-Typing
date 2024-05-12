@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f4bf5067b92dd947a15eb8dc970b4c0, type: 3}
   m_Name: GameConfig_Finer
   m_EditorClassIdentifier: 
-  easyWordsFile: facil.txt
-  hardWordsFile: dificil.txt
+  easyWordsFile: easy_es.txt
+  hardWordsFile: hard_es.txt
   initialSpawnDelay: 2
   easyFallSpeed: 0.6
   hardFallSpeed: 0.3

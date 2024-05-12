@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour {
     public static Theme selectedTheme = fallbackTheme;
 
     public static GameManager Instance { get; private set; }
-
     public ScoreCalculator ScoreCalculator { get; private set; } = new ScoreCalculator();
     public UIManager UIManager { get; private set; }
     public GameConfig config;

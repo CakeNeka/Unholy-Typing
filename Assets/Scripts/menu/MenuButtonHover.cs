@@ -2,8 +2,8 @@ using TMPro;
 using UnityEngine;
 
 public class MenuButtonHover : MonoBehaviour {
-    [SerializeField] private Color baseColor;
-    [SerializeField] private Color hoverColor;
+    public Color baseColor;
+    public Color hoverColor;
 
     private TMP_Text textBox;
     private Canvas canvas;

@@ -1,10 +1,12 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
     private Theme theme;
 
+    [Header("HUD")]
     [SerializeField]
     private TMP_Text averageCPMLabel;
     [SerializeField]
@@ -20,12 +22,25 @@ public class UIManager : MonoBehaviour {
     private TMP_Text score;
 
 
+    [Header("Game Over Screen")]
     [SerializeField]
     private GameObject gameOverPanel;
     [SerializeField]
+    private Image gameOverBackground;
+    [SerializeField]
     private TMP_Text gameOverScoreLabel;
-
+    [SerializeField]
+    private TMP_Text gameOverTitle;
+    [SerializeField]
+    private MenuButtonHover restartButton;
+    [SerializeField]
+    private MenuButtonHover gotoMenuButton;
+    
+     
+ // [Header("Pause Screen")]
+     
     private void Start() {
+        // Set HUD Colors
         theme = GameManager.Instance.Theme;
         Camera.main.backgroundColor = theme.background;
         averageCPMLast10Label.color = theme.foregroundUI;
@@ -35,11 +50,19 @@ public class UIManager : MonoBehaviour {
         score.color = theme.foregroundUI;
         scoreLabel.color = theme.foregroundUI;
 
+        // Set Game Over Screen colors
         gameOverPanel.SetActive(false);
+        gameOverBackground.color = theme.background;
+        gameOverTitle.color = theme.foregroundUI;
+        gameOverScoreLabel.color = theme.foregroundTyped;
+        restartButton.baseColor = theme.foreground;
+        gotoMenuButton.baseColor = theme.foreground;
+        restartButton.hoverColor = theme.foregroundTyped;
+        gotoMenuButton.hoverColor = theme.foregroundTyped;
     }
 
     public void SetAverageCPMText(float speed) {
-        averageCPM.text = speed.ToString("0");
+        averageCPM.text = $"{speed:0}";
     }
 
     public void SetAverageCPMLast10Text(float speed) {
