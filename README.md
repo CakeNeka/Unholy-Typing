@@ -1,8 +1,9 @@
 ﻿<div align="center">
 
-<img src="media/ph_logo.png" width=200/>
+<!-- img src="media/ph_logo.png" width=200/ -->
 
-# Unholy Typing
+
+<img src="https://readme-typing-svg.demolab.com?font=Roboto+Mono&weight=500&size=30&pause=1000&color=E2B714&background=37373700&center=true&vCenter=true&repeat=false&random=true&height=80&lines=Unholy+%E2%9B%A7+Typing" alt="Typing SVG" width="60%" />
 
 _A simple typing game_
 
@@ -29,7 +30,7 @@ A typing game.
 
 ## 🎨 Overview
 
-A minimalistic falling words typing game where the player must type words that appear on the screen before they fall down. The visuals are inspired by the open source typing test [monkeytype.com][monkeytype-gh]
+Unholy Typing is a minimalistic falling words typing game where the player must type words that appear on the screen before they fall down. The visuals are inspired by the open source typing test [monkeytype.com][monkeytype-gh].
 
 Some **key features** of Unholy Typing are:
 
@@ -42,7 +43,7 @@ Some **key features** of Unholy Typing are:
 ![Static Badge](https://img.shields.io/badge/Unity-100000?style=flat&logo=unity) 
 ![Static Badge](https://img.shields.io/badge/C%23-239120?style=flat&logo=c-sharp&logoColor=white)
 
-This game has been developed using the **Unity** engine, which uses **C#** as scripting language.
+This game has been developed using the **Unity** engine, which uses **C#** as scripting language. Since Unholy Typing is basically a text-based game, it heavily relies on the **TextMeshPro** Unity library. 
 
 ## ⌨ Development
 
@@ -68,7 +69,7 @@ I'm using the [Conventional Commits][conventional-commits] standard so the git l
 
 ![Static Badge](https://img.shields.io/badge/Made_with_🐈_by-Martina_Victoria-pink)
 
-Placeholder logo is [keyboard material icon][keyboard-icon]
+Placeholder logo is the [keyboard material icon][keyboard-icon]
 
 [gh-issues]: https://github.com/CakeNeka/Unholy-Typing/issues
 [gh-projects]: https://github.com/users/CakeNeka/projects/5/views/1
