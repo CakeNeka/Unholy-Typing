@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 
 public class ScoreCalculator {
@@ -9,7 +8,7 @@ public class ScoreCalculator {
 
         int perfectBonus = gm.config.perfectWordBonus;
         int pointsPerCharacter = gm.config.pointsPerCharacter;
-        
+
         float cpmMultiplier = gm.getCPMScoreMultiplier(averageCPMLast10);
         float wordAccuracy = wordCPM.word.Count() /
             (wordCPM.word.Count() + wordCPM.misses);

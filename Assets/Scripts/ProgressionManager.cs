@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -88,7 +87,7 @@ public class ProgressionManager : MonoBehaviour {
     }
 
     public void MissWord() {
-        if (currentMisses++ > gameManager.config.missesAllowed) {
+        if (++currentMisses > gameManager.config.missesAllowed) {
             gameManager.GameOver();
         }
         Debug.Log($"Current misses: {currentMisses}");

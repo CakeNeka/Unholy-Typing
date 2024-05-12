@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -17,13 +16,15 @@ public class TypeWriterEffect : MonoBehaviour {
     [SerializeField] private float charactersPerSecond = 20f;
     [SerializeField] private float initialSecondsDelay = 5f;
 
-    private void Start() {
+    private void Awake() {
         Time.timeScale = 1;
         textBox = GetComponent<TMP_Text>();
 
         simpleDelay = new WaitForSeconds(1 / charactersPerSecond);
         initalDelay = new WaitForSeconds(initialSecondsDelay);
+    }
 
+    private void OnEnable() {
         PlayTitleAnimation();
     }
 

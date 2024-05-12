@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public struct Theme {
+public class Theme {
     public Color background;
     public Color foreground;
     public Color foregroundTyped;

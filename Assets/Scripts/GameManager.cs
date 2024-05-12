@@ -1,11 +1,11 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
-    private static Theme fallbackTheme = Themes.neon;
+    private static readonly Theme fallbackTheme = Themes.serikaDark;
+    public static Theme selectedTheme = fallbackTheme;
 
     public static GameManager Instance { get; private set; }
 
@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
     public GameConfig config;
     public bool IsGameActive { get; private set; } = true;
     public List<WordController> WordControllers { get; private set; } = new List<WordController>();
-    public Theme Theme { get; private set; } = fallbackTheme;
+    public Theme Theme { get; private set; } = selectedTheme;
 
     private void Awake() {
         if (Instance != null && Instance != this) {

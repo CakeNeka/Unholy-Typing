@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Themes {
@@ -7,6 +8,7 @@ public class Themes {
         }
         return Color.black;
     }
+
 
     public static readonly Theme serikaDark = new(
         background: getColor("#323437"),
@@ -35,4 +37,19 @@ public class Themes {
         foregroundTyped: getColor("#a30000"),
         foregroundUI: getColor("#2e7dde")
     );
+
+    private static Dictionary<string, Theme> themes = new Dictionary<string, Theme> {
+        ["Serika Dark"] = serikaDark,
+        ["VsCode"] = vscode,
+        ["Neon"] = neon,
+        ["Darling"] = darling,
+    };
+
+    public static List<string> GetThemeNames() {
+        return new List<string>(themes.Keys);
+    }
+
+    public static Theme GetTheme(string themeName) {
+        return themes.GetValueOrDefault(themeName, serikaDark);
+    }
 }
