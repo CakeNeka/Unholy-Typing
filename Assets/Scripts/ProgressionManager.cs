@@ -85,7 +85,6 @@ public class ProgressionManager : MonoBehaviour {
         gameManager.UIManager.SetAverageCPMText(speedCalculator.AverageCPM);
         gameManager.UIManager.SetAverageCPMLast10Text(speedCalculator.AverageCPMLast10);
         gameManager.UIManager.SetScoreText(scoreCalculator.CurrentScore);
-        Debug.Log($"Score: {scoreCalculator.CurrentScore} | Accuracy: {speedCalculator.AccuracyLast10}");
     }
 
     public void MissWord() {

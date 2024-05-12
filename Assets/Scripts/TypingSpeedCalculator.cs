@@ -12,7 +12,7 @@ public class TypingSpeedCalculator {
             if (typedWords.Count() == 0)
                 return defaultTypingSpeed;
             
-            return CalculateTypingSpeedUnit(
+            return CalculateTypingSpeed(
                 typedWords.Select(c => c.word.Count()).Sum(),
                 typedWords.Select(c => c.seconds).Sum()
             );
@@ -24,7 +24,7 @@ public class TypingSpeedCalculator {
             if (typedWords.Count() <= 10)
                 return AverageCPM;
 
-            return CalculateTypingSpeedUnit(
+            return CalculateTypingSpeed(
                 typedWords.TakeLast(10).Select(c => c.word.Count()).Sum(),
                 typedWords.TakeLast(10).Select(c => c.seconds).Sum()
             );
@@ -55,7 +55,7 @@ public class TypingSpeedCalculator {
         typedWords.Add(wordSpeed);
     }
 
-    private float CalculateTypingSpeedUnit(int characters, float secondsElapsed) {
+    private float CalculateTypingSpeed(int characters, float secondsElapsed) {
         return characters / (secondsElapsed / 60);
     }
 }

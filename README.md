@@ -67,9 +67,8 @@ I'm using the [Conventional Commits][conventional-commits] standard so the git l
 
 #### 🖤 Credits
 
-![Static Badge](https://img.shields.io/badge/Made_with_🐈_by-Martina_Victoria-pink)
+![Static Badge](https://img.shields.io/badge/Made_without_🧠_by-Martina_Victoria-pink)
 
-Placeholder logo is the [keyboard material icon][keyboard-icon]
 
 [gh-issues]: https://github.com/CakeNeka/Unholy-Typing/issues
 [gh-projects]: https://github.com/users/CakeNeka/projects/5/views/1

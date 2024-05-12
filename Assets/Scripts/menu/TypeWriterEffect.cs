@@ -6,48 +6,46 @@ using UnityEngine;
 [RequireComponent(typeof(TMP_Text))]
 public class TypeWriterEffect : MonoBehaviour {
 
-    HashSet<char> punctuationSigns = new HashSet<char> {'.', ',', '?', ':', ';' , '!'};
-
     private TMP_Text textBox;
-
     private int currentVisibleCharacterIndex;
     private Coroutine typewriterCoroutine;
 
     private WaitForSeconds simpleDelay;
-    private WaitForSeconds interpunctuationDelay;
+    private WaitForSeconds initalDelay;
 
     [Header("Settings")]
     [SerializeField] private float charactersPerSecond = 20f;
-    [SerializeField] private float interpunctuationSecondsDelay= 0.5f;
+    [SerializeField] private float initialSecondsDelay = 5f;
 
-    private void Awake() {
+    private void Start() {
+        Time.timeScale = 1;
         textBox = GetComponent<TMP_Text>();
 
         simpleDelay = new WaitForSeconds(1 / charactersPerSecond);
-        interpunctuationDelay = new WaitForSeconds(interpunctuationSecondsDelay);
+        initalDelay = new WaitForSeconds(initialSecondsDelay);
+
+        PlayTitleAnimation();
     }
 
-    private void Start() {
+    private void PlayTitleAnimation() {
+        if (typewriterCoroutine != null) {
+            StopCoroutine(typewriterCoroutine);
+        }
+
         textBox.maxVisibleCharacters = 0;
         currentVisibleCharacterIndex = 0;
 
         typewriterCoroutine = StartCoroutine(Typewriter());
     }
 
-
     private IEnumerator Typewriter() {
-        yield return simpleDelay;
+        yield return initalDelay;
         TMP_TextInfo textInfo = textBox.textInfo;
-
-        while(currentVisibleCharacterIndex < textInfo.characterCount){
-            char character = textInfo.characterInfo[currentVisibleCharacterIndex].character;
+        while (currentVisibleCharacterIndex < textInfo.characterCount) {
             textBox.maxVisibleCharacters++;
 
-            if (punctuationSigns.Contains(character))
-                yield return interpunctuationDelay;
-            else
-                yield return simpleDelay;
-            
+            yield return simpleDelay;
+
             currentVisibleCharacterIndex++;
         }
 

@@ -16,7 +16,6 @@ public class EntitySpawner : MonoBehaviour {
         gameManager = GameManager.Instance;
     }
 
-
     public WordController SpawnWordGameObject(DifficultyLevel difficulty) {
         // generate random word
         Word word = wordGenerator.generateWord(difficulty);
@@ -25,10 +24,6 @@ public class EntitySpawner : MonoBehaviour {
         controller.SetWord(word);
         gameManager.AddWordController(controller);
         return controller;
-    }
-
-    public void SpawnPowerUp() {
-        Debug.LogError("TODO: Implement power ups");
     }
 
     /// <summary>

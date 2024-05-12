@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,7 +8,6 @@ public class GameManager : MonoBehaviour {
     private static Theme fallbackTheme = Themes.neon;
 
     public static GameManager Instance { get; private set; }
-
 
     public ScoreCalculator ScoreCalculator { get; private set; } = new ScoreCalculator();
     public UIManager UIManager { get; private set; }
@@ -33,33 +33,24 @@ public class GameManager : MonoBehaviour {
     }
 
     public float GetCPMFallSpeedMultiplier(float cpm) {
-        foreach (Interval interval in config.CPMIntervals) {
-            if (cpm >= interval.minCPMValue && cpm < interval.maxCPMValue) {
-                return interval.fallSpeedMultiplier;
-            }
-        }
-        Debug.LogError($"ERROR: Typing power {cpm} is too high");
-        return 1;
+        return GetCurrentInterval(cpm).fallSpeedMultiplier;
     }
 
     public float getCPMSpawnDelayMultiplier(float cpm) {
-        foreach (Interval interval in config.CPMIntervals) {
-            if (cpm >= interval.minCPMValue && cpm < interval.maxCPMValue) {
-                return interval.spawnDelayMultiplier;
-            }
-        }
-        Debug.LogError($"ERROR: Typing power {cpm} is too high");
-        return 1;
+        return GetCurrentInterval(cpm).spawnDelayMultiplier;
     }
 
     public float getCPMScoreMultiplier(float cpm) {
+        return GetCurrentInterval(cpm).scoreMultiplier;
+    }
+
+    private Interval GetCurrentInterval(float cpm) {
         foreach (Interval interval in config.CPMIntervals) {
             if (cpm >= interval.minCPMValue && cpm < interval.maxCPMValue) {
-                return interval.scoreMultiplier;
+                return interval;
             }
         }
-        Debug.LogError($"ERROR: Typing power {cpm} is too high");
-        return 1;
+        return config.CPMIntervals.Last();
     }
 
     public void GameOver() {

@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour {
     private Theme theme;
@@ -54,8 +55,7 @@ public class UIManager : MonoBehaviour {
     }
 
     public void ExitToMenu() {
-        Debug.Log("TODO: go to main menu");
-        // SceneManager.LoadScene(0);
+        SceneManager.LoadScene(0);
     }
 
     public void Restart() {

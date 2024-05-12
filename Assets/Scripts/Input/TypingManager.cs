@@ -25,8 +25,6 @@ public class TypingManager : MonoBehaviour {
         Assert.IsNotNull(activeWord);
         if (activeWord.IsNextLetter(letter)) {
             activeWord.TypeLetter();
-            // TODO reward
-            // activeWord.Reward();
             if (activeWord.WordTyped()) {
                 // remove word if already typed
                 activeWord.ToggleTimer();
@@ -38,8 +36,6 @@ public class TypingManager : MonoBehaviour {
             }
         } else {
             activeWord?.AddMiss();
-            // TODO Penalize wrong letter typed
-            // activeWordWord.Penalize();
         }
     }
 

@@ -14,6 +14,10 @@ public class InputManager : MonoBehaviour {
             typingManager.StopFocus();
         }
 
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            GameManager.Instance.GameOver();
+        }
+
         foreach (char letter in Input.inputString) {
             typingManager.TypeLetter(letter);
         }

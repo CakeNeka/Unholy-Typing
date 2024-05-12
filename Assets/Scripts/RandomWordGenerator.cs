@@ -14,14 +14,15 @@ public class RandomWordGenerator : MonoBehaviour {
     private void Start() {
         string easyWordsFile = GameManager.Instance.config.easyWordsFile;
         string hardWordsFile = GameManager.Instance.config.hardWordsFile;
+        
         easyWords = File.ReadAllLines(Application.streamingAssetsPath + "/" + easyWordsFile);
         hardWords = File.ReadAllLines(Application.streamingAssetsPath + "/" + hardWordsFile);
+
         for (int i = 0; i < easyWords.Length; i++) {
             easyWords[i] = easyWords[i].ToLower();
         }
         for (int i = 0; i < hardWords.Length; i++) {
             hardWords[i] = hardWords[i].ToLower();
         }
-
     }
 }
