@@ -5,9 +5,12 @@ public class MenuController : MonoBehaviour {
 
     [SerializeField] private GameObject settingsMenu;
     [SerializeField] private GameObject mainMenu;
+    [SerializeField] private GameObject highscoresMenu;
 
     private void Start() {
+        mainMenu.SetActive(true);
         settingsMenu.SetActive(false);
+        highscoresMenu.SetActive(false);
     }
 
     public void Play() {
@@ -21,6 +24,16 @@ public class MenuController : MonoBehaviour {
 
     public void HideSettings() {
         settingsMenu.SetActive(false);
+        mainMenu.SetActive(true);
+    }
+
+    public void ShowHighscores() {
+        highscoresMenu.SetActive(true);
+        mainMenu.SetActive(false);
+    }
+
+    public void HideHighscores() {
+        highscoresMenu.SetActive(false);
         mainMenu.SetActive(true);
     }
 

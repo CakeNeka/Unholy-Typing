@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 
 public class TypingSpeedUnits {
     private static Dictionary<string, TypingSpeedUnit> units = new Dictionary<string, TypingSpeedUnit> {
@@ -13,6 +11,5 @@ public class TypingSpeedUnits {
             units[typingSpeedUnitString]
             :
             units["cpm"];
-        
     }
 }
