@@ -12,11 +12,11 @@ public class RandomWordGenerator : MonoBehaviour {
     }
 
     private void Start() {
-        string easyWordsFile = GameManager.Instance.config.easyWordsFile;
-        string hardWordsFile = GameManager.Instance.config.hardWordsFile;
+        TextAsset easyFile = Resources.Load<TextAsset>(GameManager.Instance.config.easyWordsFile);
+        TextAsset hardFile = Resources.Load<TextAsset>(GameManager.Instance.config.hardWordsFile);
         
-        easyWords = File.ReadAllLines(Application.streamingAssetsPath + "/" + easyWordsFile);
-        hardWords = File.ReadAllLines(Application.streamingAssetsPath + "/" + hardWordsFile);
+        easyWords = easyFile.text.Replace("\r", "").Split('\n');
+        hardWords = hardFile.text.Replace("\r", "").Split('\n');
 
         for (int i = 0; i < easyWords.Length; i++) {
             easyWords[i] = easyWords[i].ToLower();

@@ -18,7 +18,7 @@ public class SettingsMenu : MonoBehaviour {
             themesDropdown.value = selectedIndex;
         }
 
-        if (config.easyWordsFile == "easy.txt") {
+        if (config.easyWordsFile == "easy") {
             langDropdown.value = 0;
         } else {
             langDropdown.value = 1;
@@ -32,12 +32,12 @@ public class SettingsMenu : MonoBehaviour {
 
     public void HandleLanguageChange(int val) {
         if (val == 0) {
-            config.easyWordsFile = "easy.txt";
-            config.hardWordsFile = "hard.txt";
+            config.easyWordsFile = "easy";
+            config.hardWordsFile = "hard";
         } 
         if (val == 1) {
-            config.easyWordsFile = "easy_es.txt";
-            config.hardWordsFile = "hard_es.txt";
+            config.easyWordsFile = "easy_es";
+            config.hardWordsFile = "hard_es";
         }
     }
 }
