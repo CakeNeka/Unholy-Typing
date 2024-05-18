@@ -5,7 +5,7 @@ public class ScoreJsonSerializer {
 
     private static SerializableHighscores LoadScoresFromJson() {
         if (PlayerPrefs.HasKey("scores")) {
-            return JsonUtility.FromJson<SerializableHighscores>(PlayerPrefs.GetString("Scores"));
+            return JsonUtility.FromJson<SerializableHighscores>(PlayerPrefs.GetString("scores"));
         }
 
         return new SerializableHighscores{scores = new List<ScoreEntry>()};

@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Linq;
 
 public class UIManager : MonoBehaviour {
     private Theme theme;
@@ -30,10 +31,10 @@ public class UIManager : MonoBehaviour {
     [SerializeField] private TMP_Text gameOverAccuracyLabel;
     [SerializeField] private TMP_Text gameOverWordsTyped;
     [SerializeField] private TMP_Text gameOverWordsTypedLabel;
-    
-     
- // [Header("Pause Screen")]
-     
+
+
+    // [Header("Pause Screen")]
+
     private void Start() {
         // Set HUD Colors
         theme = GameManager.Instance.Theme;
@@ -57,7 +58,6 @@ public class UIManager : MonoBehaviour {
         gameOverWordsTypedLabel.color = theme.foregroundUI;
         gameOverWordsTyped.color = theme.foregroundTyped;
 
-
         restartButton.baseColor = theme.foreground;
         restartButton.hoverColor = theme.foregroundTyped;
         gotoMenuButton.baseColor = theme.foreground;
@@ -78,17 +78,52 @@ public class UIManager : MonoBehaviour {
     public void SetScoreText(int score) {
         this.score.text = score.ToString();
     }
+
     public void ShowGameOverMenu() {
+        TypingSpeedCalculator speedCalculator = GameManager.Instance.SpeedCalculator;
+
         gameOverPanel.SetActive(true);
         gameOverScore.text = score.text;
+        gameOverAccuracy.text = $"{speedCalculator.Accuracy * 100:0.0}%";
+        gameOverWordsTyped.text = $"{speedCalculator.WordsTyped}";
         nameInputField.Select();
+        nameInputField.characterLimit = 3;
+        nameInputField.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
+    }
+
+    public void ValueChangeCheck() {
+        nameInputField.text = nameInputField.text.Trim().ToUpper();
     }
 
     public void ExitToMenu() {
+        SavePlayToJson();
         SceneManager.LoadScene(0);
     }
 
     public void Restart() {
+        SavePlayToJson();
         GameManager.Instance.RestartGame();
+    }
+
+    private void SavePlayToJson() {
+        TypingSpeedCalculator speedCalculator = GameManager.Instance.SpeedCalculator;
+        ScoreCalculator scoreCalculator = GameManager.Instance.ScoreCalculator;
+
+        ScoreEntry scoreEntry = new(
+            name: ParseName(nameInputField.text),
+            score: scoreCalculator.CurrentScore,
+            averageSpeed: speedCalculator.AverageCPM,
+            accuracy: speedCalculator.Accuracy,
+            wordsTyped: speedCalculator.WordsTyped
+        );
+        ScoreJsonSerializer.AddScore(scoreEntry);
+    }
+
+    private string ParseName(string name) {
+        if (name.Count() == 3)
+            return name;
+        if (name.Count() == 0)
+            return "???";
+        return name.PadRight(3, '-');
     }
 }

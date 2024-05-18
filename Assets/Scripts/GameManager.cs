@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager Instance { get; private set; }
     public ScoreCalculator ScoreCalculator { get; private set; } = new ScoreCalculator();
+    public TypingSpeedCalculator SpeedCalculator {get; private set;} = new TypingSpeedCalculator();
     public UIManager UIManager { get; private set; }
     public GameConfig config;
     public bool IsGameActive { get; private set; } = true;

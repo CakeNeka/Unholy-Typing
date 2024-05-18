@@ -49,6 +49,10 @@ public class TypingSpeedCalculator {
         }
     }
 
+    public int WordsTyped {
+        get { return typedWords.Count(); }
+    }
+
     public void AddWordCPM(WordCPM wordSpeed) {
         typedWords.Add(wordSpeed);
     }

@@ -8,13 +8,12 @@ public class HighScoresTable : MonoBehaviour {
     [SerializeField] private Transform entryContainer;
     [SerializeField] private GameObject placeholder;
     private List<Transform> entries = new List<Transform>();
-    private ScoreEntry devScore = new("vic", 8000); // My personal best
+    private ScoreEntry devScore = new("VIC", 12364); // My personal best
 
     private void Awake() {
         entryTemplate.gameObject.SetActive(false);
 
-        // List<ScoreEntry> scores = ScoreJsonSerializer.GetHighscores();
-        List<ScoreEntry> scores = dummyScores;
+        List<ScoreEntry> scores = ScoreJsonSerializer.GetHighscores();
 
         bool scoresIsEmpty = scores.Count == 0;
         placeholder.SetActive(scoresIsEmpty);
@@ -23,20 +22,6 @@ public class HighScoresTable : MonoBehaviour {
             SetHighScores(scores);
         }
     }
-
-    private List<ScoreEntry> dummyScores = new List<ScoreEntry>{
-        new("nno", 234),
-        new("nka", 234),
-        new("nka", 234),
-        new("mrt", 434),
-        new("lsi", 234),
-        new("neo", 234),
-        new("emo", 234),
-        new("mrt", 434),
-        new("lsi", 234),
-        new("neo", 234),
-        new("emo", 234),
-    };
 
     public void ClearHighScores() {
         // delete highscores from storage
@@ -67,8 +52,17 @@ public class HighScoresTable : MonoBehaviour {
             entryTransform.Find("posText").GetComponent<TMP_Text>().text = rank.ToString();
             entryTransform.Find("scoreText").GetComponent<TMP_Text>().text = scores[i].Score.ToString();
             entryTransform.Find("nameText").GetComponent<TMP_Text>().text = scores[i].Name;
+
+            HandleExceptions(scores[i], entryTransform);
         }
     }
 
-
+    private void HandleExceptions(ScoreEntry score, Transform entryTransform) {
+        if (score.Name == "MCR") {
+            entryTransform.Find("nameText").GetComponent<TMP_Text>().color = Themes.serikaDark.foregroundUI;
+        }
+        if (score == devScore) {
+            entryTransform.Find("nameText").GetComponent<TMP_Text>().color = Themes.serikaDark.foregroundTyped;
+        }
+    }
 }

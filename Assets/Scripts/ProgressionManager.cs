@@ -18,9 +18,9 @@ public class ProgressionManager : MonoBehaviour {
     private ScoreCalculator scoreCalculator;
 
     private void Start() {
-        speedCalculator = new TypingSpeedCalculator();
-        spawner = GetComponent<EntitySpawner>();
         gameManager = GameManager.Instance;
+        speedCalculator = gameManager.SpeedCalculator;
+        spawner = GetComponent<EntitySpawner>();
         scoreCalculator = gameManager.ScoreCalculator;
         config = gameManager.config;
         baseSpeedDictionary = new Dictionary<DifficultyLevel, float> {
