@@ -1,4 +1,6 @@
-﻿<div align="center">
+﻿<br>
+<br>
+<div align="center">
 
 <!-- img src="media/ph_logo.png" width=200/ -->
 
@@ -8,8 +10,16 @@
 _A simple typing game_
 
 </div>
+<br>
+<br>
+
+<div align="center">
+
+[![WebGL Build 🖤](https://github.com/CakeNeka/Unholy-Typing/actions/workflows/main.yml/badge.svg)](https://github.com/CakeNeka/Unholy-Typing/actions/workflows/main.yml)&nbsp;&nbsp;
+![GitHub commit activity](https://img.shields.io/github/commit-activity/t/cakeneka/unholy-typing)
 
 
+</div>
 
 <details open="open">
   <summary><b>Table of Contents</b></summary>
