@@ -43,6 +43,7 @@ public class WordController : MonoBehaviour {
     public void SetWord(Word word) {
         this.word = word;
         displayText.text = word.text;
+        displayText.text = displayText.text.Replace(' ', '·');
     }
 
     public bool IsNextLetter(char letter) {
@@ -58,6 +59,7 @@ public class WordController : MonoBehaviour {
             $"{styleSelectedOpen}{styleTypedOpen}{word.text.Substring(0, index)}{styleTypedClose}{word.text.Substring(index)}{styleSelectedClose}";
 
         displayText.text = newText;
+        displayText.text = displayText.text.Replace(' ', '·');
     }
 
     public void DestroySelf() {
@@ -73,6 +75,7 @@ public class WordController : MonoBehaviour {
             secondsElapsed += Time.time - startTime;
             string newText = $"{styleTypedOpen}{word.text.Substring(0, index)}{styleTypedClose}{word.text.Substring(index)}";
             displayText.text = newText;
+            displayText.text = displayText.text.Replace(' ', '·');
         } else {
             startTime = Time.time;
         }
