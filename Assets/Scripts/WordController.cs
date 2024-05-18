@@ -37,7 +37,7 @@ public class WordController : MonoBehaviour {
     }
 
     private void Update() {
-        transform.Translate(0f, -FallSpeed * Time.deltaTime, 0);
+        transform.Translate(0f, -FallSpeed * Time.deltaTime, 0f);
     }
 
     public void SetWord(Word word) {
