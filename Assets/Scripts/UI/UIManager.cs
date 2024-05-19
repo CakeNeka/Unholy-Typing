@@ -8,13 +8,17 @@ public class UIManager : MonoBehaviour {
     private Theme theme;
 
     [Header("HUD")]
+    [SerializeField] private Image hudBg;
     [SerializeField] private TMP_Text averageCPMLabel;
     [SerializeField] private TMP_Text averageCPMLast10Label;
-    [SerializeField] private TMP_Text scoreLabel;
     [SerializeField] private TMP_Text averageCPM;
     [SerializeField] private TMP_Text averageCPMLast10;
+    [SerializeField] private TMP_Text scoreLabel;
     [SerializeField] private TMP_Text score;
-    [SerializeField] private Image hudBg;
+    [SerializeField] private TMP_Text accuracyLabel;
+    [SerializeField] private TMP_Text accuracy;
+    [SerializeField] private TMP_Text wordsTypedLabel;
+    [SerializeField] private TMP_Text wordsTyped;
     [SerializeField] private TMP_Text versionLabel;
 
 
@@ -34,18 +38,22 @@ public class UIManager : MonoBehaviour {
 
 
     // [Header("Pause Screen")]
-
     private void Start() {
         // Set HUD Colors
         theme = GameManager.Instance.Theme;
         Camera.main.backgroundColor = theme.background;
         averageCPMLast10Label.color = theme.foregroundUI;
-        averageCPMLast10.color = theme.foregroundUI;
+        averageCPMLast10.color = theme.foregroundTyped;
         averageCPMLabel.color = theme.foregroundUI;
-        averageCPM.color = theme.foregroundUI;
-        score.color = theme.foregroundUI;
+        averageCPM.color = theme.foregroundTyped;
         scoreLabel.color = theme.foregroundUI;
+        score.color = theme.foregroundTyped;
+        accuracyLabel.color = theme.foregroundUI;
+        accuracy.color = theme.foregroundTyped;
+        wordsTypedLabel.color = theme.foregroundUI;
+        wordsTyped.color = theme.foregroundTyped;
         versionLabel.color = theme.foregroundUI;
+        hudBg.color = theme.backgroundUI;
 
         // Set Game Over Screen colors
         gameOverPanel.SetActive(false);
@@ -76,7 +84,11 @@ public class UIManager : MonoBehaviour {
     }
 
     public void SetScoreText(int score) {
+        TypingSpeedCalculator speedCalculator = GameManager.Instance.SpeedCalculator;
+
         this.score.text = score.ToString();
+        accuracy.text = $"{speedCalculator.Accuracy * 100:0.0}";
+        wordsTyped.text = $"{speedCalculator.WordsTyped}";
     }
 
     public void ShowGameOverMenu() {
