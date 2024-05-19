@@ -35,8 +35,6 @@ public class ProgressionManager : MonoBehaviour {
         while (gameManager.IsGameActive) {
             WordController spawnedWord;
             DifficultyLevel wordLevel;
-            // wait for spawn delay
-            yield return new WaitForSeconds(CalculateSpawnDelay());
 
             // decide whether to generate hard or easy word
             wordLevel = GenerateDifficultyLevel();
@@ -44,6 +42,9 @@ public class ProgressionManager : MonoBehaviour {
 
             // set word fallspeed
             spawnedWord.FallSpeed = GenerateFallSpeed(wordLevel);
+
+            // wait for spawn delay
+            yield return new WaitForSeconds(CalculateSpawnDelay());
         }
     }
     private float CalculateSpawnDelay() {
@@ -64,7 +65,7 @@ public class ProgressionManager : MonoBehaviour {
 
 
     private DifficultyLevel GenerateDifficultyLevel() {
-        if (canSpawnHardWord && UnityEngine.Random.Range(0f, 1f) < config.hardWordChance) {
+        if (canSpawnHardWord && Random.Range(0f, 1f) < config.hardWordChance) {
             StartCoroutine(WaitForHardWordCoolDown());
             return DifficultyLevel.Hard;
         }
