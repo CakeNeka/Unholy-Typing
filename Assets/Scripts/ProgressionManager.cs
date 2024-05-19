@@ -63,7 +63,6 @@ public class ProgressionManager : MonoBehaviour {
         canSpawnHardWord = true;
     }
 
-
     private DifficultyLevel GenerateDifficultyLevel() {
         if (canSpawnHardWord && Random.Range(0f, 1f) < config.hardWordChance) {
             StartCoroutine(WaitForHardWordCoolDown());

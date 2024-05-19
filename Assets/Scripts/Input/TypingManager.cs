@@ -10,6 +10,7 @@ public class TypingManager : MonoBehaviour {
     private List<WordController> wordControllers;
     private WordController activeWord = null;
     private ProgressionManager progressionManager;
+    [SerializeField] private GameObject explosionEffect;
 
     private void Start() {
         wordControllers = GameManager.Instance.WordControllers;
@@ -45,6 +46,7 @@ public class TypingManager : MonoBehaviour {
         }
         word.DestroySelf();
         wordControllers.Remove(word);
+        Instantiate(explosionEffect, word.transform.position, Quaternion.identity);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
