@@ -46,11 +46,22 @@ public class Themes {
         foregroundUI: getColor("#2e7dde")
     );
 
+    public static readonly Theme oneDark = new(
+        name: "One dark",
+        background: getColor("#282c34"),
+        backgroundUI: getColor("#21252b"),
+        foreground: getColor("#f2f4f5"),
+        foregroundTyped: getColor("#528bff"),
+        foregroundUI: getColor("#c678dd")
+    );
+
+
     private static Dictionary<string, Theme> themes = new Dictionary<string, Theme> {
         [serikaDark.name] = serikaDark,
         [vscode.name] = vscode,
         [neon.name] = neon,
         [darling.name] = darling,
+        [oneDark.name] = oneDark
     };
 
     public static List<string> GetThemeNames() {
