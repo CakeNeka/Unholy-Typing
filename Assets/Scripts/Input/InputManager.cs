@@ -14,7 +14,7 @@ public class InputManager : MonoBehaviour {
         }
 
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            GameManager.Instance.GameOver();
+            GameManager.Instance.TogglePause();
         }
 
         foreach (char letter in Input.inputString) {

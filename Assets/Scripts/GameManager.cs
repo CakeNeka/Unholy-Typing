@@ -8,8 +8,10 @@ public class GameManager : MonoBehaviour {
     public static Theme selectedTheme = fallbackTheme;
 
     public static GameManager Instance { get; private set; }
+    private bool gamePaused = false;
+
     public ScoreCalculator ScoreCalculator { get; private set; } = new ScoreCalculator();
-    public TypingSpeedCalculator SpeedCalculator {get; private set;} = new TypingSpeedCalculator();
+    public TypingSpeedCalculator SpeedCalculator { get; private set; } = new TypingSpeedCalculator();
     public UIManager UIManager { get; private set; }
     public GameConfig config;
     public bool IsGameActive { get; private set; } = true;
@@ -58,6 +60,12 @@ public class GameManager : MonoBehaviour {
         IsGameActive = false;
         Time.timeScale = 0;
         UIManager.ShowGameOverMenu();
+    }
+
+    public void TogglePause() {
+        gamePaused = !gamePaused;
+        Time.timeScale = gamePaused ? 0 : 1;
+        UIManager.TogglePauseScreen();
     }
 
     public void RestartGame() {

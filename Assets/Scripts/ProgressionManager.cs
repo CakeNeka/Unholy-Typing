@@ -90,6 +90,5 @@ public class ProgressionManager : MonoBehaviour {
         if (++currentMisses > gameManager.config.missesAllowed) {
             gameManager.GameOver();
         }
-        Debug.Log($"Current misses: {currentMisses}");
     }
 }

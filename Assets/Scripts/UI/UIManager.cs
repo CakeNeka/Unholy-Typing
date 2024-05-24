@@ -3,6 +3,8 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Linq;
+using System;
+using UnityEditor;
 
 public class UIManager : MonoBehaviour {
     private Theme theme;
@@ -37,7 +39,14 @@ public class UIManager : MonoBehaviour {
     [SerializeField] private TMP_Text gameOverWordsTypedLabel;
 
 
-    // [Header("Pause Screen")]
+    [Header("Pause Screen")]
+    [SerializeField] private GameObject pausePanel;
+    [SerializeField] private Image pauseBackground;
+    [SerializeField] private TMP_Text pauseTitle;
+    [SerializeField] private MenuButtonHover pauseRestartButton;
+    [SerializeField] private MenuButtonHover pauseGotoMenuButton;
+    [SerializeField] private MenuButtonHover pauseResumeGameButton;
+
     private void Start() {
         // Set HUD Colors
         theme = GameManager.Instance.Theme;
@@ -70,6 +79,14 @@ public class UIManager : MonoBehaviour {
         restartButton.hoverColor = theme.foregroundTyped;
         gotoMenuButton.baseColor = theme.foreground;
         gotoMenuButton.hoverColor = theme.foregroundTyped;
+
+        // Set pause menu colors
+        pausePanel.SetActive(false);
+        pauseBackground.color = theme.background;
+        pauseTitle.color = theme.foregroundUI;
+        pauseGotoMenuButton.baseColor = theme.foreground;
+        pauseRestartButton.baseColor = theme.foreground;
+        pauseResumeGameButton.baseColor = theme.foreground;
 
         // Set version text
         versionLabel.text = "UT " + Application.version;
@@ -116,6 +133,10 @@ public class UIManager : MonoBehaviour {
         SavePlayToJson();
         GameManager.Instance.RestartGame();
     }
+    
+    public void Resume() {
+        GameManager.Instance.TogglePause();
+    }
 
     private void SavePlayToJson() {
         TypingSpeedCalculator speedCalculator = GameManager.Instance.SpeedCalculator;
@@ -137,5 +158,9 @@ public class UIManager : MonoBehaviour {
         if (name.Count() == 0)
             return "???";
         return name.PadRight(3, '-');
+    }
+
+    public void TogglePauseScreen() {
+        pausePanel.SetActive(!pausePanel.activeSelf);
     }
 }
