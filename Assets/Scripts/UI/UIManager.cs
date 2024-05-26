@@ -28,8 +28,8 @@ public class UIManager : MonoBehaviour {
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private Image gameOverBackground;
     [SerializeField] private TMP_Text gameOverTitle;
-    [SerializeField] private MenuButtonHover restartButton;
-    [SerializeField] private MenuButtonHover gotoMenuButton;
+    [SerializeField] private Button restartButton;
+    [SerializeField] private Button gotoMenuButton;
     [SerializeField] private TMP_InputField nameInputField;
     [SerializeField] private TMP_Text gameOverScore;
     [SerializeField] private TMP_Text gameOverScoreLabel;
@@ -43,13 +43,23 @@ public class UIManager : MonoBehaviour {
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private Image pauseBackground;
     [SerializeField] private TMP_Text pauseTitle;
-    [SerializeField] private MenuButtonHover pauseRestartButton;
-    [SerializeField] private MenuButtonHover pauseGotoMenuButton;
-    [SerializeField] private MenuButtonHover pauseResumeGameButton;
+    [SerializeField] private Button pauseRestartButton;
+    [SerializeField] private Button pauseGotoMenuButton;
+    [SerializeField] private Button pauseResumeGameButton;
 
     private void Start() {
-        // Set HUD Colors
         theme = GameManager.Instance.Theme;
+
+        ColorBlock colorBlock = new ColorBlock {
+            normalColor = theme.backgroundUI,
+            highlightedColor = theme.backgroundUI,
+            pressedColor = theme.backgroundUI,
+            disabledColor = theme.backgroundUI,
+            selectedColor = theme.backgroundUI,
+            colorMultiplier = 1f
+        };
+
+        // Set HUD Colors
         Camera.main.backgroundColor = theme.background;
         averageCPMLast10Label.color = theme.foregroundUI;
         averageCPMLast10.color = theme.foregroundTyped;
@@ -74,19 +84,26 @@ public class UIManager : MonoBehaviour {
         gameOverAccuracy.color = theme.foregroundTyped;
         gameOverWordsTypedLabel.color = theme.foregroundUI;
         gameOverWordsTyped.color = theme.foregroundTyped;
-
-        restartButton.baseColor = theme.foreground;
-        restartButton.hoverColor = theme.foregroundTyped;
-        gotoMenuButton.baseColor = theme.foreground;
-        gotoMenuButton.hoverColor = theme.foregroundTyped;
+        restartButton.colors = colorBlock;
+        restartButton.GetComponentInChildren<MenuButtonHover>().baseColor = theme.foreground;
+        restartButton.GetComponentInChildren<MenuButtonHover>().hoverColor = theme.foregroundTyped;
+        gotoMenuButton.colors = colorBlock;
+        gotoMenuButton.GetComponentInChildren<MenuButtonHover>().baseColor = theme.foreground;
+        gotoMenuButton.GetComponentInChildren<MenuButtonHover>().hoverColor = theme.foregroundTyped;
 
         // Set pause menu colors
         pausePanel.SetActive(false);
         pauseBackground.color = theme.background;
         pauseTitle.color = theme.foregroundUI;
-        pauseGotoMenuButton.baseColor = theme.foreground;
-        pauseRestartButton.baseColor = theme.foreground;
-        pauseResumeGameButton.baseColor = theme.foreground;
+        pauseGotoMenuButton.colors = colorBlock;
+        pauseGotoMenuButton.GetComponentInChildren<MenuButtonHover>().baseColor = theme.foreground;
+        pauseGotoMenuButton.GetComponentInChildren<MenuButtonHover>().hoverColor = theme.foregroundTyped;
+        pauseRestartButton.colors = colorBlock;
+        pauseRestartButton.GetComponentInChildren<MenuButtonHover>().baseColor = theme.foreground;
+        pauseRestartButton.GetComponentInChildren<MenuButtonHover>().hoverColor = theme.foregroundTyped;
+        pauseResumeGameButton.colors = colorBlock;
+        pauseResumeGameButton.GetComponentInChildren<MenuButtonHover>().baseColor = theme.foreground;
+        pauseResumeGameButton.GetComponentInChildren<MenuButtonHover>().hoverColor = theme.foregroundTyped;
 
         // Set version text
         versionLabel.text = "UT " + Application.version;
@@ -133,7 +150,7 @@ public class UIManager : MonoBehaviour {
         SavePlayToJson();
         GameManager.Instance.RestartGame();
     }
-    
+
     public void Resume() {
         GameManager.Instance.TogglePause();
     }

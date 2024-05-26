@@ -10,7 +10,7 @@ public class ScoreCalculator {
         int pointsPerCharacter = gm.config.pointsPerCharacter;
 
         float cpmMultiplier = gm.getCPMScoreMultiplier(averageCPMLast10);
-        float wordAccuracy = wordCPM.word.Count() /
+        float wordAccuracy = (float)wordCPM.word.Count() /
             (wordCPM.word.Count() + wordCPM.misses);
 
         CurrentScore += (int)(wordCPM.word.Count() * pointsPerCharacter * cpmMultiplier * wordAccuracy);
