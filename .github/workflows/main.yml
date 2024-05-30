@@ -1,10 +1,17 @@
 name: WebGL Build 🖤
 
-on: [push, pull_request]
+on: 
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
   
 jobs:
   build:
-    name: 'build project'
+    name: Build 🧱
     runs-on: ubuntu-latest
     steps:
       # Checkout
@@ -14,12 +21,12 @@ jobs:
           lfs: false
 
       # Cache
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         with:
           path: Library
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
-            Library-:
+            Library-
 
       # Build
       - name: Build project
@@ -32,7 +39,28 @@ jobs:
           targetPlatform: WebGL
 
       # Output
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
-          name: Build
+          name: build
+          path: build/WebGL
+
+  deployPages:
+    needs: build
+    name: Deploy to Github Pages 🐙
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: build
           path: build
+
+      - run: ls -R
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: build/WebGL 
