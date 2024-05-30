@@ -5,7 +5,7 @@
 <!-- img src="media/ph_logo.png" width=200/ -->
 
 
-<img src="https://readme-typing-svg.demolab.com?font=Roboto+Mono&weight=500&size=30&pause=1000&color=E2B714&background=37373700&center=true&vCenter=true&repeat=false&random=true&height=80&lines=Unholy+%E2%9B%A7+Typing" alt="Typing SVG" width="60%" />
+<a href="https://cakeneka.github.io/Unholy-Typing"><img src="https://readme-typing-svg.demolab.com?font=Roboto+Mono&weight=500&size=30&pause=1000&color=E2B714&background=37373700&center=true&vCenter=true&repeat=false&random=true&height=80&lines=Unholy+%E2%9B%A7+Typing" alt="Typing SVG" width="60%" /></a>
 
 _A simple typing game_
 
