@@ -22,6 +22,9 @@ public class UIManager : MonoBehaviour {
     [SerializeField] private TMP_Text wordsTypedLabel;
     [SerializeField] private TMP_Text wordsTyped;
     [SerializeField] private TMP_Text versionLabel;
+    // Lives left:
+    [SerializeField] private GameObject liveTemplate;
+    [SerializeField] private Transform livesContainer;
 
 
     [Header("Game Over Screen")]
@@ -48,6 +51,7 @@ public class UIManager : MonoBehaviour {
     [SerializeField] private Button pauseResumeGameButton;
 
     private void Start() {
+
         theme = GameManager.Instance.Theme;
 
         ColorBlock colorBlock = new ColorBlock {
@@ -107,6 +111,10 @@ public class UIManager : MonoBehaviour {
 
         // Set version text
         versionLabel.text = "UT " + Application.version;
+
+        // Disable live left template
+        liveTemplate.GetComponent<Image>().color = theme.foregroundTyped;
+        SetLivesLeft(GameManager.Instance.config.missesAllowed);
     }
 
     public void SetAverageCPMText(float speed) {
@@ -123,6 +131,16 @@ public class UIManager : MonoBehaviour {
         this.score.text = score.ToString();
         accuracy.text = $"{speedCalculator.Accuracy * 100:0.0}";
         wordsTyped.text = $"{speedCalculator.WordsTyped}";
+    }
+
+    public void SetLivesLeft(int livesLeft) {
+        for (int i = 0; i < livesContainer.childCount; i++) {
+            Destroy(livesContainer.GetChild(i).gameObject);
+        }
+
+        for (int i = 0; i <= livesLeft; i++) {
+            Instantiate(liveTemplate, livesContainer).GetComponent<Image>().enabled = true;
+        }
     }
 
     public void ShowGameOverMenu() {
