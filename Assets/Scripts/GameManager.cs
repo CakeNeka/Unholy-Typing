@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
     public ScoreCalculator ScoreCalculator { get; private set; } = new ScoreCalculator();
     public TypingSpeedCalculator SpeedCalculator { get; private set; } = new TypingSpeedCalculator();
     public UIManager UIManager { get; private set; }
+    public SoundManager SoundManager { get; private set; }
     public GameConfig config;
     public bool IsGameActive { get; private set; } = true;
     public List<WordController> WordControllers { get; private set; } = new List<WordController>();
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour {
 
     private void Start() {
         UIManager = FindObjectOfType<UIManager>();
+        SoundManager = GetComponent<SoundManager>();
     }
 
     public void AddWordController(WordController controller) {

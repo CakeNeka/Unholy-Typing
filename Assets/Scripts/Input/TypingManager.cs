@@ -20,6 +20,7 @@ public class TypingManager : MonoBehaviour {
     public void TypeLetter(char letter) {
         // If there's no active word and no word starts by the typed letter then return. 
         if (!activeWord && !TryFindWord(letter)) {
+            GameManager.Instance.SoundManager.PlaySound(Sound.LetterMissed);
             return;
         }
 
@@ -34,8 +35,11 @@ public class TypingManager : MonoBehaviour {
                 activeWord.DestroySelf();
                 wordControllers.Remove(activeWord);
                 activeWord = null;
+
+                GameManager.Instance.SoundManager.PlaySound(Sound.WordTyped);
             }
         } else {
+            GameManager.Instance.SoundManager.PlaySound(Sound.LetterMissed);
             activeWord?.AddMiss();
         }
     }
@@ -57,6 +61,7 @@ public class TypingManager : MonoBehaviour {
     }
 
 
+    // Find the word starting by `letter` that has the lowest y position
     private bool TryFindWord(char letter) {
         foreach (var word in wordControllers) {
             bool validLetter = word.IsNextLetter(letter);

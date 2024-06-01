@@ -88,6 +88,7 @@ public class ProgressionManager : MonoBehaviour {
 
     public void MissWord() {
         currentMisses++;
+        gameManager.SoundManager.PlaySound(Sound.WordMissed);
         gameManager.UIManager.SetLivesLeft(gameManager.config.missesAllowed - currentMisses);
         if (currentMisses > gameManager.config.missesAllowed) {
             gameManager.GameOver();

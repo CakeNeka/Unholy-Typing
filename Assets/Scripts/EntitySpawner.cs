@@ -17,7 +17,7 @@ public class EntitySpawner : MonoBehaviour {
     }
 
     public WordController SpawnWordGameObject(DifficultyLevel difficulty) {
-        // generate random word
+        // Generate random word
         Word word = wordGenerator.generateWord(difficulty);
         // Instantiate word GO
         WordController controller = Instantiate(wordPrefab, GenerateSpawnPosition(difficulty), Quaternion.identity).GetComponent<WordController>();
