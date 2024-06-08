@@ -4,7 +4,6 @@
 
 <!-- img src="media/ph_logo.png" width=200/ -->
 
-
 <a href="https://cakeneka.github.io/Unholy-Typing"><img src="https://readme-typing-svg.demolab.com?font=Roboto+Mono&weight=500&size=30&pause=1000&color=E2B714&background=37373700&center=true&vCenter=true&repeat=false&random=true&height=80&lines=Unholy+%E2%9B%A7+Typing" alt="Typing SVG" width="60%" /></a>
 
 _A simple typing game_
@@ -18,11 +17,10 @@ _A simple typing game_
 [![WebGL Build 🖤](https://github.com/CakeNeka/Unholy-Typing/actions/workflows/main.yml/badge.svg)](https://github.com/CakeNeka/Unholy-Typing/actions/workflows/main.yml)&nbsp;&nbsp;
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/t/cakeneka/unholy-typing)
 
-
 </div>
 
 <details open="open">
-  <summary><b>Table of Contents</b></summary>
+  <summary><b>Table of contents</b></summary>
 
 <br>
 
@@ -34,9 +32,9 @@ _A simple typing game_
   
 </details>
 
-## 📜 About The Project
+## 📜 About the project
 
-A typing game.
+This typing game was developed as a final project, I chose to build a typing game because I thought it's something really cool, besides, I'm quite good at typing.
 
 ## 🎨 Overview
 
@@ -53,32 +51,36 @@ Some **key features** of Unholy Typing are:
 ![Static Badge](https://img.shields.io/badge/Unity-100000?style=flat&logo=unity) 
 ![Static Badge](https://img.shields.io/badge/C%23-239120?style=flat&logo=c-sharp&logoColor=white)
 
-This game has been developed using the **Unity** engine, which uses **C#** as scripting language. Since Unholy Typing is basically a text-based game, it heavily relies on the **TextMeshPro** Unity library. 
+This game has been developed using the **Unity** engine, which uses **C#** as scripting language. Since Unholy Typing is basically a text-based game, it heavily relies on the **TextMeshPro** Unity library.
 
 ## ⌨ Development
 
-### 📅 Devlog
+### 🐙 Git and GitHub
 
-The [devlog](./devlog.md) is just a markdown file where I add screenshots and gifs about the development process
-
-### 🐙 Git and Github
-
-You can also follow the development of this game through the [issues][gh-issues] and [Github Projects kanban table][gh-projects].
+You can follow the development of this game through the [issues][gh-issues] and [GitHub Projects kanban table][gh-projects].
 I'm using the [Conventional Commits][conventional-commits] standard so the git log is clean and understandable.
 
-## 💾 Project Files
+## 💾 Project files
 
-- [`Assets`](./Assets/). 
-    - [`Scripts`](./Assets/Scripts/). This folder contains all the .cs files
-    - [`Prefabs`](./Assets/Prefabs/). 
-
+- [`Assets`](./Assets/) It contains most of the game's files
+  - [`Art`](./Assets/Art/) Font files
+  - [`Prefabs`](./Assets/Prefabs/)  Prefab GameObjects. Prefabs are like GameObject templates to be cloned
+  - [`Resources`](./Assets/Resources/) Text files source of random words
+  - [`Scenes`](./Assets/Scenes/) Scenes are like levels in Unity
+  - [`ScriptableObjects`](./Assets/ScriptableObjects/) Scriptable objects are data containers to save large amounts of data
+  - [`Scripts`](./Assets/Scripts/) Game logic (c# scripts)
+  - [`Sounds`](./Assets/Sounds/) Sound assets
+  - [`StyleSheets`](./Assets/StyleSheets/) Custom stylesheets for TextMesh Pro
+  - [`TextMesh Pro`](./Assets/TextMesh%20Pro/) Unity library for UI text.
+- [`Packages`](./Packages/) Unity packages
+- [`ProjectSettings`](./ProjectSettings/) Project config files
+- [`media`](./media/) Resources for README.md
 
 ---
 
 #### 🖤 Credits
 
 ![Static Badge](https://img.shields.io/badge/Made_without_🧠_by-Martina_Victoria-pink)
-
 
 [gh-issues]: https://github.com/CakeNeka/Unholy-Typing/issues
 [gh-projects]: https://github.com/users/CakeNeka/projects/5/views/1
