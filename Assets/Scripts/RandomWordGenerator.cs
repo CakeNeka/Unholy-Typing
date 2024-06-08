@@ -15,6 +15,7 @@ public class RandomWordGenerator : MonoBehaviour {
         TextAsset easyFile = Resources.Load<TextAsset>(GameManager.Instance.config.easyWordsFile);
         TextAsset hardFile = Resources.Load<TextAsset>(GameManager.Instance.config.hardWordsFile);
         
+        // Split files by line feed
         easyWords = easyFile.text.Replace("\r", "").Split('\n');
         hardWords = hardFile.text.Replace("\r", "").Split('\n');
 

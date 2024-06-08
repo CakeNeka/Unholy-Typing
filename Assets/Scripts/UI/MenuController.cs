@@ -6,6 +6,7 @@ public class MenuController : MonoBehaviour {
     [SerializeField] private GameObject settingsMenu;
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject highscoresMenu;
+    [SerializeField] private GameObject confirmExitDialogue;
 
     private void Start() {
         mainMenu.SetActive(true);
@@ -34,6 +35,16 @@ public class MenuController : MonoBehaviour {
 
     public void HideHighscores() {
         highscoresMenu.SetActive(false);
+        mainMenu.SetActive(true);
+    }
+
+    public void ShowConfirmExitDialogue() {
+        confirmExitDialogue.SetActive(true);
+        mainMenu.SetActive(false);
+    }
+
+    public void HideConfirmExitDialogue() {
+        confirmExitDialogue.SetActive(false);
         mainMenu.SetActive(true);
     }
 

@@ -8,7 +8,7 @@ public class HighScoresTable : MonoBehaviour {
     [SerializeField] private Transform entryContainer;
     [SerializeField] private GameObject placeholder;
     private List<Transform> entries = new List<Transform>();
-    private ScoreEntry devScore = new("VIC", 12364); // My personal best
+    private ScoreEntry devScore = new("MAR", 12364); // My personal best
 
     private void Awake() {
         entryTemplate.gameObject.SetActive(false);
